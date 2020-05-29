@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerApp.Android", "BeerApp.Android\BeerApp.Android.csproj", "{3B774939-9CA3-423F-84A3-8C5BBCB31255}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerApp", "BeerApp\BeerApp.csproj", "{8DA9F919-387A-4927-829A-D4D62BD1BBE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B774939-9CA3-423F-84A3-8C5BBCB31255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B774939-9CA3-423F-84A3-8C5BBCB31255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B774939-9CA3-423F-84A3-8C5BBCB31255}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3B774939-9CA3-423F-84A3-8C5BBCB31255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B774939-9CA3-423F-84A3-8C5BBCB31255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B774939-9CA3-423F-84A3-8C5BBCB31255}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8DA9F919-387A-4927-829A-D4D62BD1BBE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DA9F919-387A-4927-829A-D4D62BD1BBE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DA9F919-387A-4927-829A-D4D62BD1BBE2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8DA9F919-387A-4927-829A-D4D62BD1BBE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DA9F919-387A-4927-829A-D4D62BD1BBE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DA9F919-387A-4927-829A-D4D62BD1BBE2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CAC2E52B-650A-46FD-88D8-37327903497F}
+	EndGlobalSection
+EndGlobal
