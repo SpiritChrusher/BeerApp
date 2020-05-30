@@ -167,7 +167,7 @@
       "price": 600,
       "quality": 6.5,
       "acquisition": [ "InterSpar" ],
-      "priceertek": "6.5",
+      "arertek": "6.5",
       "packformat": 0.5
     },
     {
@@ -433,7 +433,7 @@
     {
       "name": "Deep Zold",
       "alcohol": 4.0,
-      "taste": [ "Kozepesen vizes", " mprice ihato enyhe lager" ],
+      "taste": [ "Kozepesen vizes", " mar ihato enyhe lager" ],
       "origin": "horvath",
       "type": [ "Lager" ],
       "manufacturer": "Pivovara Daruvar",
@@ -745,7 +745,7 @@
       "taste": [ "Eros keseru vilagos sor", " eleg egyedi iz", " Saazer komlo" ],
       "type": [ "Lager" ],
       "origin": "magyar",
-      "manufacturer": "Heineken Hungpriceia",
+      "manufacturer": "Heineken Hungaria",
       "consumption": "ivosor",
       "price": 260,
       "quality": 3.5,
@@ -936,7 +936,7 @@
     {
       "name": "Blanc 1664",
       "alcohol": 5.0,
-      "taste": [ "edeskes", " kellemesen gyümolcsos nypricei sor" ],
+      "taste": [ "edeskes", " kellemesen gyümolcsos nyari sor" ],
       "origin": "francia",
       "type": [ "Ale", "Buzasor" ],
       "manufacturer": "Carlsberg",
@@ -1014,7 +1014,7 @@
     {
       "name": "Pecsi Szalon Limited",
       "alcohol": 4.6,
-      "taste": [ "Kisse edeskes", " enyhe", " kellemes nypricei sor" ],
+      "taste": [ "Kisse edeskes", " enyhe", " kellemes nyari sor" ],
       "origin": "magyar",
       "type": [ "Lager" ],
       "manufacturer": "Pecsi",
@@ -1051,7 +1051,7 @@
       "packformat": 0.44
     },
     {
-      "name": "AgrpriceX",
+      "name": "AgrarX",
       "alcohol": 8.0,
       "taste": [ "Kozepesen keseru", " citrusos", " kicsit porkolt" ],
       "origin": "magyar",
@@ -1118,7 +1118,7 @@
     {
       "name": "Konrad",
       "alcohol": 5.2,
-      "taste": [ "Enyhen keseru", " egyedibb izo", " szpriceazabb cseh lager" ],
+      "taste": [ "Enyhen keseru", " egyedibb izo", " szarazabb cseh lager" ],
       "origin": "cseh",
       "type": [ "Lager" ],
       "manufacturer": "Pivovary Vratislavice",
@@ -1235,7 +1235,7 @@
     {
       "name": "Pecsi Premium Pils",
       "alcohol": 4.7,
-      "taste": [ "Nagyon enyhe", " erezhetoen szuretlen", " kellemes nypricei sor" ],
+      "taste": [ "Nagyon enyhe", " erezhetoen szuretlen", " kellemes nyari sor" ],
       "origin": "magyar",
       "type": [ "Lager" ],
       "manufacturer": "Pecsi",
@@ -1688,7 +1688,7 @@
       "packformat": 0.33
     },
     {
-      "name": "Szent Andras Hathpriceom",
+      "name": "Szent Andras Hatharom",
       "alcohol": 4.9,
       "taste": [ "kellemes", "karamellas", "konnyen_ihato" ],
       "origin": "magyar",
@@ -1924,7 +1924,7 @@
     {
       "name": "Spread the Vibes",
       "alcohol": 5.8,
-      "taste": [ "kellemes", "gyümolcsos", "szpriceaz", "kicsit_keseru", "komlos_utoiz" ],
+      "taste": [ "kellemes", "gyümolcsos", "szaraz", "kicsit_keseru", "komlos_utoiz" ],
       "origin": "magyar",
       "type": [ "ale", "IPA" ],
       "manufacturer": "Brewing Vibes Brewery",
@@ -2091,7 +2091,7 @@
       "packformat": 0.33
     },
     {
-      "name": " Szent Andras Vpricei Noverek",
+      "name": "Szent Andras Vari Noverek",
       "alcohol": 4.9,
       "taste": [ "konnyen_ihato", "citrusos", "frissíto", "kellemes", "kicsit_keseru", "komlos" ],
       "origin": "magyar",
@@ -2104,7 +2104,7 @@
       "packformat": 0.5
     },
     {
-      "name": " Bipolar Bear",
+      "name": "Bipolar Bear",
       "alcohol": 6.1,
       "taste": [ "konnyen_ihato", "gyümolcsos", "kellemes", "kicsit_keseru", "buzasor_iz" ],
       "origin": "magyar",

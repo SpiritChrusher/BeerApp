@@ -26,6 +26,10 @@ namespace BeerApp
             lista = GetJsonData();
         }
 
+
+
+
+
          List<BeerPOJO> GetJsonData()
         {
             string jsonfilename = "Allbeers.json";
@@ -55,10 +59,18 @@ namespace BeerApp
 
         private void beername_Completed(object sender, EventArgs e)
         {
-
-            if (beername.Text.Length > 2)
+            
+            if (beername.Text.Length > 0)
             {
+                if (beername.Text.EndsWith(" "))
+                {
+                  string newname = beername.Text.Remove(beername.Text.Length-1);
+                    beerinfos.Text = Search.BeerSearch(lista, newname);
+                }
+                else
+                {
                 beerinfos.Text = Search.BeerSearch(lista, beername.Text);
+                }
             }
             else
             {

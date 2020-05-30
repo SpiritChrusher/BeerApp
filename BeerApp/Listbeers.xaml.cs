@@ -18,38 +18,12 @@ namespace BeerApp
     {
         private ObservableCollection<BeerPOJO> _rootobj;
 
-        /*  public Listbeers(List<BeerPOJO> lista)
-          {
-              lists = lista;
-          }
-        */
-
-        List<BeerPOJO> GetJsonData()
-        {
-            string jsonfilename = "Allbeers.json";
-
-            var assembly = typeof(Listbeers).GetTypeInfo().Assembly;
-
-            List<BeerPOJO> Beerslist = new List<BeerPOJO>();
-
-            Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{jsonfilename}");
-            using (var reader = new System.IO.StreamReader(stream))
-            {
-                var jsonString = reader.ReadToEnd();
-
-                Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(jsonString);
-
-            }
-
-            return Beerslist;
-
-        }
         public Listbeers(List<BeerPOJO> lista)
         {
             InitializeComponent();
 
-            _rootobj = new ObservableCollection<BeerPOJO>(lista);
-                MyListView.ItemsSource = _rootobj;
+            _rootobj = new ObservableCollection<BeerPOJO>(lista.OrderBy(x => x.name).ToList());
+            MyListView.ItemsSource = _rootobj;
             
         }
 

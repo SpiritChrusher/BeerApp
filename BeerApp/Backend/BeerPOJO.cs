@@ -30,7 +30,6 @@ namespace BeerApp
         public List<string> acquisition;
 
         public decimal packformat;
-
         public BeerPOJO() { }
 
         public BeerPOJO(string aname, decimal aalcohol, List<string> ataste, string aorigin, List<string> atype,
@@ -47,9 +46,11 @@ namespace BeerApp
             quality = aquality;
             acquisition = aacquistion;
             packformat = apackformat;
+           
         }
+        public string Displayquality => $"Quality: {quality}";
 
-
+        public string Displaytype => $"{type[type.Count - 1]}";
           public override string ToString()
           {
               return $"name: {name}\nalcohol: {alcohol}\ntaste: {string.Join(", ", taste)} " +
