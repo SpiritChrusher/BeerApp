@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -13,26 +16,41 @@ namespace BeerApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Listbeers : ContentPage
     {
-        private List<BeerPOJO> lists;
-
-        public ObservableCollection<BeerPOJO> Items { get; set; } = new ObservableCollection<BeerPOJO>();
-
         private ObservableCollection<BeerPOJO> _rootobj;
 
+        /*  public Listbeers(List<BeerPOJO> lista)
+          {
+              lists = lista;
+          }
+        */
+
+        List<BeerPOJO> GetJsonData()
+        {
+            string jsonfilename = "Allbeers.json";
+
+            var assembly = typeof(Listbeers).GetTypeInfo().Assembly;
+
+            List<BeerPOJO> Beerslist = new List<BeerPOJO>();
+
+            Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{jsonfilename}");
+            using (var reader = new System.IO.StreamReader(stream))
+            {
+                var jsonString = reader.ReadToEnd();
+
+                Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(jsonString);
+
+            }
+
+            return Beerslist;
+
+        }
         public Listbeers(List<BeerPOJO> lista)
         {
-            this.lists = lista;
-        }
-        public Listbeers()
-        {
             InitializeComponent();
-            BindingContext = this;
 
-            foreach (var item in lists)
-            {          
-            _rootobj = new ObservableCollection<BeerPOJO>(lists);
+            _rootobj = new ObservableCollection<BeerPOJO>(lista);
                 MyListView.ItemsSource = _rootobj;
-            }
+            
         }
 
 

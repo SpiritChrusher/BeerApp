@@ -19,6 +19,6 @@
         <Label x:Name="beerinfos"  Text="Beerdata will be here!" HorizontalOptions="Center" FontSize="20"
            VerticalOptions="CenterAndExpand"/>
 
-        <Button x:Name="tosecond" Text="OtherPage" Clicked="tosecond_Clicked" Margin="0, 30, 20, 30"/>
+        <Button x:Name="tosecond" Text="Beerlist" Clicked="tosecond_Clicked" Margin="0, 30, 20, 30"/>
     </StackLayout>
 </ContentPage>

@@ -50,13 +50,14 @@ namespace BeerApp
         }
 
 
-        public override string ToString()
-        {
-            return $"name: {name}\n alcohol: {alcohol}\n taste: {string.Join(", ", taste)} " +
-                $"\n origin: {origin} \n type: {type[type.Count - 1]} \n manufacturer: {manufacturer}\n " +
-                $"consumption:  {consumption}\n price: {price}\n quality: {quality} " +
-                $"\n acquisition: {string.Join(", ", acquisition)}\n  packformat: {packformat}";
-        }
-    }
+          public override string ToString()
+          {
+              return $"name: {name}\nalcohol: {alcohol}\ntaste: {string.Join(", ", taste)} " +
+                  $"\norigin: {origin} \ntype: {type[type.Count - 1]} \nmanufacturer: {manufacturer}\n " +
+                  $"consumption:  {consumption}\n price: {price}\nquality: {quality} " +
+                  $"\nacquisition: {string.Join(", ", acquisition)}\npack: {packformat}";
+          }
+       
+     }
 
 }

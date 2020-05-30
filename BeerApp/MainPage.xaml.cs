@@ -18,9 +18,12 @@ namespace BeerApp
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+
+        private List<BeerPOJO> lista;
         public MainPage()
         {
             InitializeComponent();
+            lista = GetJsonData();
         }
 
          List<BeerPOJO> GetJsonData()
@@ -43,9 +46,11 @@ namespace BeerApp
             return Beerslist;
            
         }
+
         async private void tosecond_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Listbeers(GetJsonData()));
+            await Navigation.PushAsync(new Listbeers(lista));
+          
         }
 
         private void beername_Completed(object sender, EventArgs e)
@@ -53,7 +58,7 @@ namespace BeerApp
 
             if (beername.Text.Length > 2)
             {
-                beerinfos.Text = Search.BeerSearch(GetJsonData(), beername.Text);
+                beerinfos.Text = Search.BeerSearch(lista, beername.Text);
             }
             else
             {
