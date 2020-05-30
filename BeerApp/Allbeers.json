@@ -1,5 +1,18 @@
 [
     {
+      "name": "Abcd",
+      "alcohol": 6.3,
+      "taste": [ "kicsit_keseru", "kicsit_karamellas", "kellemes_buzasor" ],
+      "origin": "nemet",
+      "type": [ "ale", "Buzasor" ],
+      "manufacturer": "Privatbrauerei Eichbaum",
+      "consumption": "ivosor",
+      "price": 300,
+      "quality": 5.0,
+      "acquisition": [ "InterSpar", "Spar" ],
+      "packformat": 0.5
+    },
+    {
       "name": "Apostel Weissbier",
       "alcohol": 5.3,
       "taste": [ "kicsit_keseru", "kicsit_karamellas", "kellemes_buzasor" ],
@@ -92,7 +105,7 @@
       "packformat": 0.5
     },
     {
-      "name": "ARGUS Sz¸rke",
+      "name": "ARGUS Sz√ºrke",
       "alcohol": 4.0,
       "taste": [ "Gyenge lager", "nem tul keseru", "nagyon konnyen ihato" ],
       "origin": "cseh",
@@ -157,7 +170,7 @@
       "packformat": 0.5
     },
     {
-      "name": "Bocskai Õr Voros",
+      "name": "Bocskai √çr Voros",
       "alcohol": 5.7,
       "taste": [ "kellemes", " kicsit keseru", " konnyen ihato voros sor iz" ],
       "origin": "magyar",
@@ -171,7 +184,7 @@
       "packformat": 0.5
     },
     {
-      "name": "Borsodi T¸zes",
+      "name": "Borsodi T√ºzes",
       "alcohol": 4.5,
       "taste": [ "Enyhe", " kicsit keseru", " kicsit voros sor iz" ],
       "origin": "magyar",
@@ -210,12 +223,12 @@
       "packformat": 0.5
     },
     {
-      "name": "CsÌki",
+      "name": "Cs√≠ki",
       "alcohol": 6.0,
       "taste": [ "Kozepesen keseru", " korrekt iz" ],
       "origin": "szekelyfold",
       "type": [ "Lager", "BAK" ],
-      "manufacturer": "CsÌki",
+      "manufacturer": "Cs√≠ki",
       "consumption": "ivosor",
       "price": 360,
       "quality": 4.0,
@@ -223,12 +236,12 @@
       "packformat": 0.5
     },
     {
-      "name": "CsÌki Szuretlen",
+      "name": "Cs√≠ki Szuretlen",
       "alcohol": 5.0,
       "taste": [ "Kellemes termeszetes iz", " enyhen komlos", " konnyen ihato" ],
       "origin": "szekelyfold",
       "type": [ "Lager" ],
-      "manufacturer": "CsÌki ",
+      "manufacturer": "Cs√≠ki ",
       "consumption": "ivosor",
       "price": 280,
       "quality": 5.0,
@@ -368,7 +381,7 @@
     {
       "name": "Gyertyanos Barna Gyemant",
       "alcohol": 5.5,
-      "taste": [ "Kellemesen kaves", " f¸stos izvilagu" ],
+      "taste": [ "Kellemesen kaves", " f√ºstos izvilagu" ],
       "origin": "magyar",
       "type": [ "Lager", "Barna lager" ],
       "manufacturer": "Gyertyanos",
@@ -394,7 +407,7 @@
     {
       "name": "Happy Easter",
       "alcohol": 6.4,
-      "taste": [ "Nagyon kellemes", " kozepesen keseru", " kicsit f¸stos" ],
+      "taste": [ "Nagyon kellemes", " kozepesen keseru", " kicsit f√ºstos" ],
       "origin": "magyar",
       "type": [ "Ale", "IPA", "Amerikai IPA" ],
       "manufacturer": "HopTop",
@@ -472,7 +485,7 @@
     {
       "name": "Edelwiess",
       "alcohol": 5.3,
-      "taste": [ "DefinitÌv buzasor iz" ],
+      "taste": [ "Definit√≠v buzasor iz" ],
       "origin": "nemet",
       "type": [ "Ale", "Buzasor" ],
       "manufacturer": "Brau Union osterreich",
@@ -702,7 +715,7 @@
       "packformat": 0.5
     },
     {
-      "name": "Sixtusbr‰u",
+      "name": "Sixtusbr√§u",
       "alcohol": 4.2,
       "taste": [ "Basic nemet sor" ],
       "origin": "nemet",
@@ -720,7 +733,7 @@
       "taste": [ "kellemes izu", " nem tul tolakodoan buzasor" ],
       "origin": "Nemet",
       "type": [ "Ale", "Buzasor" ],
-      "manufacturer": "Feldschloﬂchen",
+      "manufacturer": "Feldschlo√üchen",
       "consumption": "ivosor",
       "quality": 4.5,
       "acquisition": [ "Spar", " TESCO" ],
@@ -755,7 +768,7 @@
     {
       "name": "Pilsner Urquell",
       "alcohol": 4.4,
-      "taste": [ "DefinitÌv cseh pils iz", "komlos", "eleg szensavas", "keseru" ],
+      "taste": [ "Definit√≠v cseh pils iz", "komlos", "eleg szensavas", "keseru" ],
       "origin": "cseh",
       "type": [ "Lager", "Pils" ],
       "manufacturer": "Plzensky Prazdroj",
@@ -936,7 +949,7 @@
     {
       "name": "Blanc 1664",
       "alcohol": 5.0,
-      "taste": [ "edeskes", " kellemesen gy¸molcsos nyari sor" ],
+      "taste": [ "edeskes", " kellemesen gy√ºmolcsos nyari sor" ],
       "origin": "francia",
       "type": [ "Ale", "Buzasor" ],
       "manufacturer": "Carlsberg",
@@ -990,7 +1003,7 @@
       "alcohol": 6.5,
       "taste": [ "Meggyes", " lagy", " edes iz" ],
       "origin": "magyar",
-      "type": [ "Lager", "barna lager", "gy¸molcsos lager" ],
+      "type": [ "Lager", "barna lager", "gy√ºmolcsos lager" ],
       "consumption": "felig buzulos",
       "manufacturer": "Mob",
       "price": 450,
@@ -1090,7 +1103,7 @@
       "packformat": 0.33
     },
     {
-      "name": "CsÌki krem sor",
+      "name": "Cs√≠ki krem sor",
       "alcohol": 4.5,
       "taste": [ "Kicsit", " keseru", " konnyen ihato" ],
       "origin": "magyar",
@@ -1159,7 +1172,7 @@
       "alcohol": 4.0,
       "taste": [ "Nagyon meggyes", " kozepesen edes" ],
       "origin": "Belga",
-      "type": [ "Ale", "Belga", "lambic", "Gy¸molcsos lambic" ],
+      "type": [ "Ale", "Belga", "lambic", "Gy√ºmolcsos lambic" ],
       "manufacturer": "Mort Subite Brewery",
       "consumption": "buzulos",
       "price": 470,
@@ -1274,7 +1287,7 @@
     {
       "name": "Pecsi APA",
       "alcohol": 5.0,
-      "taste": [ "Citrusos", " kellemetl¸l keseru utoiz" ],
+      "taste": [ "Citrusos", " kellemetl√ºl keseru utoiz" ],
       "origin": "magyar",
       "type": [ "Ale", "American Pale Ale" ],
       "manufacturer": "Pecsi",
@@ -1287,7 +1300,7 @@
     {
       "name": "Popstar",
       "alcohol": 6.0,
-      "taste": [ "Kozepesen keseru", " definitÌv IPA iz. kellemes" ],
+      "taste": [ "Kozepesen keseru", " definit√≠v IPA iz. kellemes" ],
       "origin": "magyar",
       "type": [ "Ale", "IPA" ],
       "manufacturer": "Mad Scientist",
@@ -1612,7 +1625,7 @@
     {
       "name": "Maltman Gyomber",
       "alcohol": 5.2,
-      "taste": [ "gy¸molcsos", "konnyen_ihato", "kellemes", "edes" ],
+      "taste": [ "gy√ºmolcsos", "konnyen_ihato", "kellemes", "edes" ],
       "origin": "szlovak",
       "type": [ "Ale", "bodza_Ale" ],
       "manufacturer": "Maltman",
@@ -1638,7 +1651,7 @@
     {
       "name": "Zirci Apatsagi Piperitum Mobile",
       "alcohol": 5.0,
-      "taste": [ "fuszeres", "enyhen_komlos", "savanyu", "eros_szecsuani_bors_iz", "k¸lonleges" ],
+      "taste": [ "fuszeres", "enyhen_komlos", "savanyu", "eros_szecsuani_bors_iz", "k√ºlonleges" ],
       "origin": "magyar",
       "type": [ "ale", "season_ale", "szecsuani_borsos_saison Ale" ],
       "manufacturer": "Zirci Apatsag",
@@ -1649,12 +1662,12 @@
       "packformat": 0.33
     },
     {
-      "name": "H¸bris Pils",
+      "name": "H√ºbris Pils",
       "alcohol": 4.8,
       "taste": [ "komlos", "kicsit_keseru", "malatas" ],
       "origin": "magyar",
       "type": [ "lager", "pils" ],
-      "manufacturer": "H¸bris",
+      "manufacturer": "H√ºbris",
       "consumption": "ivosor",
       "price": 500,
       "quality": 5.5,
@@ -1664,7 +1677,7 @@
     {
       "name": "Fuller's London Porter",
       "alcohol": 5.4,
-      "taste": [ "kellemes", "karakteres", "karamellas", "kicsit_f¸stos", "kozepesen_konnyen_ihato" ],
+      "taste": [ "kellemes", "karakteres", "karamellas", "kicsit_f√ºstos", "kozepesen_konnyen_ihato" ],
       "origin": "angol",
       "type": [ "Ale", "Porter" ],
       "manufacturer": "Fuller's London",
@@ -1675,12 +1688,12 @@
       "packformat": 0.5
     },
     {
-      "name": "H¸bris Stout",
+      "name": "H√ºbris Stout",
       "alcohol": 4.1,
       "taste": [ "komplex", "kellemes", "edeskes_utoiz" ],
       "origin": "magyar",
       "type": [ "ale", "stout" ],
-      "manufacturer": "H¸bris",
+      "manufacturer": "H√ºbris",
       "consumption": "buzulos",
       "price": 500,
       "quality": 6.5,
@@ -1742,7 +1755,7 @@
     {
       "name": "Floreffe",
       "alcohol": 6.3,
-      "taste": [ "gy¸molcsos", "nem_tul_eros", "kicsit_bananos_utoiz", "konnyen_ihato" ],
+      "taste": [ "gy√ºmolcsos", "nem_tul_eros", "kicsit_bananos_utoiz", "konnyen_ihato" ],
       "origin": "belga",
       "type": [ "ale", "belga" ],
       "manufacturer": "Lefebvre",
@@ -1781,7 +1794,7 @@
     {
       "name": "Beertailor Pils",
       "alcohol": 5.0,
-      "taste": [ "kellemes", "konnyen_ihato", "kenyeres_elesztos", "enyhen_szensavas", "gy¸molcsos" ],
+      "taste": [ "kellemes", "konnyen_ihato", "kenyeres_elesztos", "enyhen_szensavas", "gy√ºmolcsos" ],
       "origin": "magyar",
       "type": [ "lager", "amerikai_lager", "pils" ],
       "manufacturer": "Beertailor",
@@ -1807,7 +1820,7 @@
     {
       "name": "Chocolate Vanilia Imperial Stout",
       "alcohol": 7.8,
-      "taste": [ "vanÌlias", "csokis", "keseru", "tomeny", "enyhe_porkolt_keseruseg" ],
+      "taste": [ "van√≠lias", "csokis", "keseru", "tomeny", "enyhe_porkolt_keseruseg" ],
       "origin": "magyar",
       "type": [ "ale", "stout", "imperial_stout", "chocolate_vanilia_imperial_stout" ],
       "manufacturer": "First",
@@ -1833,7 +1846,7 @@
     {
       "name": "Codebreakers of the Universe",
       "alcohol": 6.0,
-      "taste": [ "kellemes", "konnyen_ihato", "gy¸molcsos", "fuszeres", "konnyed" ],
+      "taste": [ "kellemes", "konnyen_ihato", "gy√ºmolcsos", "fuszeres", "konnyed" ],
       "origin": "magyar",
       "type": [ "ale", "IPA", "New-England_IPA" ],
       "manufacturer": "HopTop",
@@ -1857,12 +1870,12 @@
       "packformat": 0.5
     },
     {
-      "name": "Szuretlen CsÌki",
+      "name": "Szuretlen Cs√≠ki",
       "alcohol": 6.0,
       "taste": [ "konnyen_ihato", "kozepesen_keseru", "kozepesen_szensavas", "elesztos" ],
       "origin": "erdelyi",
       "type": [ "lager" ],
-      "manufacturer": "CsÌki ",
+      "manufacturer": "Cs√≠ki ",
       "consumption": "ivosor",
       "price": 0,
       "quality": 4.5,
@@ -1885,7 +1898,7 @@
     {
       "name": "Zirci Apatsagi Belga",
       "alcohol": 6.0,
-      "taste": [ "kellemes", "konnyen_ihato", "nem felbarna", "kicsit_edes", "nem_gy¸molcsos" ],
+      "taste": [ "kellemes", "konnyen_ihato", "nem felbarna", "kicsit_edes", "nem_gy√ºmolcsos" ],
       "origin": "magyar",
       "type": [ "ale", "belga" ],
       "manufacturer": "Zirci Apatsag",
@@ -1924,7 +1937,7 @@
     {
       "name": "Spread the Vibes",
       "alcohol": 5.8,
-      "taste": [ "kellemes", "gy¸molcsos", "szaraz", "kicsit_keseru", "komlos_utoiz" ],
+      "taste": [ "kellemes", "gy√ºmolcsos", "szaraz", "kicsit_keseru", "komlos_utoiz" ],
       "origin": "magyar",
       "type": [ "ale", "IPA" ],
       "manufacturer": "Brewing Vibes Brewery",
@@ -1937,7 +1950,7 @@
     {
       "name": "Bandiba",
       "alcohol": 6.0,
-      "taste": [ "kellemes", "komlos", "gy¸molcsos", "testes", "kozepesen_keseru" ],
+      "taste": [ "kellemes", "komlos", "gy√ºmolcsos", "testes", "kozepesen_keseru" ],
       "origin": "magyar",
       "type": [ "ale", "IPA", "Amerikai_IPA" ],
       "manufacturer": "Szent Andras",
@@ -1948,7 +1961,7 @@
       "packformat": 0.5
     },
     {
-      "name": "KÌserleti Nyul Calm Storm",
+      "name": "K√≠serleti Nyul Calm Storm",
       "alcohol": 9.8,
       "taste": [ "kellemes", "kaves", "tomeny", "kicsit_edes", "kicsit_csokis", "nem_szensavas" ],
       "origin": "magyar",
@@ -1976,7 +1989,7 @@
     {
       "name": "Sunset",
       "alcohol": 5.7,
-      "taste": [ "gy¸molcsos", "keseru", "kicsit_teas", "konnyen_ihato", "kellemes" ],
+      "taste": [ "gy√ºmolcsos", "keseru", "kicsit_teas", "konnyen_ihato", "kellemes" ],
       "origin": "magyar",
       "type": [ "ale", "IPA", "East-Coast_IPA" ],
       "manufacturer": "HopTop",
@@ -1989,7 +2002,7 @@
     {
       "name": "Easy A",
       "alcohol": 4.5,
-      "taste": [ "kellemes", "konnyed", "konnyen_ihato", "kicsit_keseru", "gy¸molcsos" ],
+      "taste": [ "kellemes", "konnyed", "konnyen_ihato", "kicsit_keseru", "gy√ºmolcsos" ],
       "origin": "magyar",
       "type": [ "ale", "APA" ],
       "manufacturer": "Horizont",
@@ -2002,7 +2015,7 @@
     {
       "name": "Morning Joe",
       "alcohol": 6.0,
-      "taste": [ "kellemes", "nagyon_kaves", "f¸stos", "porkolt_iz" ],
+      "taste": [ "kellemes", "nagyon_kaves", "f√ºstos", "porkolt_iz" ],
       "origin": "magyar",
       "type": [ "ale", "stout" ],
       "manufacturer": "Horizont",
@@ -2067,7 +2080,7 @@
     {
       "name": "Szent Andras Szilvas",
       "alcohol": 3.7,
-      "taste": [ "konnyen_ihato", "gy¸molcsos", "edes", "nem_keseru" ],
+      "taste": [ "konnyen_ihato", "gy√ºmolcsos", "edes", "nem_keseru" ],
       "origin": "magyar",
       "type": [ "lager", "szilvas_lager" ],
       "manufacturer": "Szent Andras",
@@ -2093,7 +2106,7 @@
     {
       "name": "Szent Andras Vari Noverek",
       "alcohol": 4.9,
-      "taste": [ "konnyen_ihato", "citrusos", "frissÌto", "kellemes", "kicsit_keseru", "komlos" ],
+      "taste": [ "konnyen_ihato", "citrusos", "friss√≠to", "kellemes", "kicsit_keseru", "komlos" ],
       "origin": "magyar",
       "type": [ "ale", "APA" ],
       "manufacturer": "Szent Andras",
@@ -2106,7 +2119,7 @@
     {
       "name": "Bipolar Bear",
       "alcohol": 6.1,
-      "taste": [ "konnyen_ihato", "gy¸molcsos", "kellemes", "kicsit_keseru", "buzasor_iz" ],
+      "taste": [ "konnyen_ihato", "gy√ºmolcsos", "kellemes", "kicsit_keseru", "buzasor_iz" ],
       "origin": "magyar",
       "type": [ "ale", "IPA", "white_IPA" ],
       "manufacturer": "Monyo",
@@ -2132,7 +2145,7 @@
     {
       "name": "Pink Killer",
       "alcohol": 5.0,
-      "taste": [ "edes", "kicsit_gy¸molcsos", "nem_keseru", "kicsit_szensavas", "konnyen_ihato" ],
+      "taste": [ "edes", "kicsit_gy√ºmolcsos", "nem_keseru", "kicsit_szensavas", "konnyen_ihato" ],
       "origin": "belga",
       "type": [ "ale", "belga" ],
       "manufacturer": "Brasserie de Silly",
