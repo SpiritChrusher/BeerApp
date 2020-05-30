@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BeerApp.Backend;
+using Xamarin.Essentials;
+using System.Net.Http;
 
 namespace BeerApp
 {
@@ -23,35 +25,57 @@ namespace BeerApp
         public MainPage()
         {
             InitializeComponent();
-            lista = GetJsonData();
+            lista = GetJson();
         }
 
-
-
-
-
-         List<BeerPOJO> GetJsonData()
+        private List<BeerPOJO> GetJson()
         {
+            List<BeerPOJO> jsonbeer;
+
+            var current = Connectivity.NetworkAccess;
+            if (current == NetworkAccess.Internet)
+            {
+                   String url = "https://gist.githubusercontent.com/SpiritChrusher/ad7e8ab75c68d25a27fc3e9c78c2222c/raw/c1c49fc1a856dd40fa094e3c0c15c5c7b27514f2/Allbeers.json";
+                   System.Net.WebClient client = new System.Net.WebClient();
+                   String json = client.DownloadString(url);
+
+                jsonbeer = ReadBeer(json);
+            }
+            else
+            {
+                beerinfos.Text = "no internet, only local file is working!";
+                jsonbeer = LocalJsonData();
+            }
+            return jsonbeer;
+        }
+
+        private List<BeerPOJO> ReadBeer(string all)
+        {
+            List<BeerPOJO> Beerslist; 
+
+            Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(all);
+
+            return Beerslist;
+        }
+
+        List<BeerPOJO> LocalJsonData()
+        {
+            List<BeerPOJO> Beerslist = new List<BeerPOJO>();
             string jsonfilename = "Allbeers.json";
 
             var assembly = typeof(MainPage).GetTypeInfo().Assembly;
 
-              List<BeerPOJO> Beerslist = new List<BeerPOJO>();
-
             Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{jsonfilename}");
-            using (var reader = new System.IO.StreamReader(stream))
+            using (var reader = new StreamReader(stream))
             {
                 var jsonString = reader.ReadToEnd();
 
-                  Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(jsonString);
+                Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(jsonString);
 
             }
-
             return Beerslist;
-           
         }
-
-        async private void tosecond_Clicked(object sender, EventArgs e)
+            async private void tosecond_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Listbeers(lista));
           
@@ -59,8 +83,8 @@ namespace BeerApp
 
         private void beername_Completed(object sender, EventArgs e)
         {
-            
-            if (beername.Text.Length > 0)
+         
+           if (beername.Text.Length > 0)
             {
                 if (beername.Text.EndsWith(" "))
                 {
