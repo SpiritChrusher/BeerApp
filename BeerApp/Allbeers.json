@@ -1,18 +1,5 @@
 [
     {
-      "name": "Abcd",
-      "alcohol": 6.3,
-      "taste": [ "kicsit_keseru", "kicsit_karamellas", "kellemes_buzasor" ],
-      "origin": "nemet",
-      "type": [ "ale", "Buzasor" ],
-      "manufacturer": "Privatbrauerei Eichbaum",
-      "consumption": "ivosor",
-      "price": 300,
-      "quality": 5.0,
-      "acquisition": [ "InterSpar", "Spar" ],
-      "packformat": 0.5
-    },
-    {
       "name": "Apostel Weissbier",
       "alcohol": 5.3,
       "taste": [ "kicsit_keseru", "kicsit_karamellas", "kellemes_buzasor" ],
