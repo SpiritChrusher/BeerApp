@@ -5,10 +5,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="BeerApp.Listbeers">
-  <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
+    <StackLayout>
+        <Label Text="das"/>
+        <ListView x:Name="MyListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding name}" Detail="{Binding quality}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+
+
+
+            <!--
     <d:ListView.ItemsSource>
         <x:Array Type="{x:Type x:String}">
             <x:String>Item 1</x:String>
@@ -18,15 +27,16 @@
             <x:String>Item 5</x:String>
         </x:Array>
     </d:ListView.ItemsSource>
-    <!--Built in Cells-->
+      -->
+            <!--Built in Cells
     <ListView.ItemTemplate>
         <DataTemplate>
             <TextCell Text="{Binding .}" d:Text="{Binding .}" />
         </DataTemplate>
     </ListView.ItemTemplate>
-    
-    <!--Custom View Cells-->
-    <!--
+    -->
+            <!--Custom View Cells
+      
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
@@ -41,6 +51,7 @@
         </ViewCell>
       </DataTemplate>
     </ListView.ItemTemplate>
-    -->
-  </ListView>
+-->
+        </ListView>
+    </StackLayout>
 </ContentPage>

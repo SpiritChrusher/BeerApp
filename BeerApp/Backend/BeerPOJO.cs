@@ -7,7 +7,7 @@ using System.IO;
 
 namespace BeerApp
 {
-    public class Beers
+    public class BeerPOJO
     {
         public string name { get; set; }
 
@@ -31,9 +31,9 @@ namespace BeerApp
 
         public decimal packformat;
 
-        public Beers() { }
+        public BeerPOJO() { }
 
-        public Beers(string aname, decimal aalcohol, List<string> ataste, string aorigin, List<string> atype,
+        public BeerPOJO(string aname, decimal aalcohol, List<string> ataste, string aorigin, List<string> atype,
             string amanufacturer, string aconsumption, int aprice, decimal aquality, List<string> aacquistion, decimal apackformat)
         {
             name = aname;
@@ -49,36 +49,12 @@ namespace BeerApp
             packformat = apackformat;
         }
 
-        public static List<Beers> ReadBeer()
-        {
-              List<Beers> beerlist = new List<Beers>();
-              var jsonString = File.ReadAllText("BeerApp/Allbeers.json");
-
-            JsonTextReader reader = new JsonTextReader(new StringReader(jsonString));
-              reader.SupportMultipleContent = true;
-
-              while (true)
-              {
-                  if (!reader.Read())
-                  {
-                      break;
-                  }
-
-                  JsonSerializer serializer = new JsonSerializer();
-                  Beers beer = serializer.Deserialize<Beers>(reader);
-
-                  beerlist.Add(beer);
-              }
-
-
-              return beerlist;
-        }
 
         public override string ToString()
         {
-            return $"name: {name},\n alcohol: {alcohol} \n taste: {string.Join(", ", taste)} " +
-                $"\n origin: {origin} \n type: {type[type.Count - 1]} \n manufacturer: {manufacturer} \n " +
-                $"consumption:  {consumption},\n price: {price}, \n quality: {quality} " +
+            return $"name: {name}\n alcohol: {alcohol}\n taste: {string.Join(", ", taste)} " +
+                $"\n origin: {origin} \n type: {type[type.Count - 1]} \n manufacturer: {manufacturer}\n " +
+                $"consumption:  {consumption}\n price: {price}\n quality: {quality} " +
                 $"\n acquisition: {string.Join(", ", acquisition)}\n  packformat: {packformat}";
         }
     }

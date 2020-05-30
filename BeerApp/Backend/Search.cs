@@ -7,7 +7,7 @@ namespace BeerApp.Backend
     class Search
     {
 
-        public static string BeerSearch(List<Beers> allbeer ,string beername)
+        public static string BeerSearch(List<BeerPOJO> allbeer ,string beername)
         {
             int point = 0;
             string found = "";

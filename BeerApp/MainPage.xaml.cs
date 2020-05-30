@@ -23,30 +23,34 @@ namespace BeerApp
             InitializeComponent();
         }
 
-        List<Beers> GetJsonData()
+         List<BeerPOJO> GetJsonData()
         {
             string jsonfilename = "Allbeers.json";
 
             var assembly = typeof(MainPage).GetTypeInfo().Assembly;
 
-              List<Beers> Beerslist = new List<Beers>();
+              List<BeerPOJO> Beerslist = new List<BeerPOJO>();
 
             Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{jsonfilename}");
             using (var reader = new System.IO.StreamReader(stream))
             {
                 var jsonString = reader.ReadToEnd();
 
-                  Beerslist = JsonConvert.DeserializeObject<List<Beers>>(jsonString);
+                  Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(jsonString);
 
             }
 
             return Beerslist;
            
         }
-
-
-        private void search_Clicked(object sender, EventArgs e)
+        async private void tosecond_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushAsync(new Listbeers(GetJsonData()));
+        }
+
+        private void beername_Completed(object sender, EventArgs e)
+        {
+
             if (beername.Text.Length > 2)
             {
                 beerinfos.Text = Search.BeerSearch(GetJsonData(), beername.Text);
@@ -55,11 +59,6 @@ namespace BeerApp
             {
                 beerinfos.Text = "Not enough characters";
             }
-        }
-
-        private void tosecond_Clicked(object sender, EventArgs e)
-        {
-
         }
     }
 }

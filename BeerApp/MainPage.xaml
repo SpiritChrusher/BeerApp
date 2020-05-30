@@ -10,15 +10,15 @@
 
         <Label Text="BeerSearch App" 
            HorizontalOptions="Center"
-           VerticalOptions="Center"/>
+           VerticalOptions="Center" FontSize="18"/>
 
-        <Entry x:Name="beername" IsPassword="False" Placeholder="enter beername here!" />
-
-        <Button x:Name="search" Text="Search" Clicked="search_Clicked"/>
+        <Entry x:Name="beername" Completed="beername_Completed" 
+               IsPassword="False" Placeholder="enter beername here!"  
+               Margin="40, 30, 0, 30"/>
 
         <Label x:Name="beerinfos"  Text="Beerdata will be here!" HorizontalOptions="Center" FontSize="20"
            VerticalOptions="CenterAndExpand"/>
 
-        <Button x:Name="tosecond" Text="OtherPage" Clicked="tosecond_Clicked" />
+        <Button x:Name="tosecond" Text="OtherPage" Clicked="tosecond_Clicked" Margin="0, 30, 20, 30"/>
     </StackLayout>
 </ContentPage>
