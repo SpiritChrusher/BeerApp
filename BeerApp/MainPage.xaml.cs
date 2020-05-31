@@ -101,6 +101,11 @@ namespace BeerApp
                 beerinfos.Text = "Not enough characters";
             }
         }
+
+        private void favorites_Clicked(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
 

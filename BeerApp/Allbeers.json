@@ -1,4 +1,30 @@
 [
+	{
+	  "name": "Imperial Sour Ale",
+      "alcohol": 7.5,
+      "taste": [ "komplex","nagyon savanyu", "citromlé utóíz"],
+      "origin": "magyar",
+      "type": [ "ale", "sour ale", "imerial sour ale"],
+      "manufacturer": "Horizont",
+      "consumption": "buzulos",
+      "price": 1000,
+      "quality": 7.0,
+      "acquisition": [ "Online", "Stay" ],
+      "packformat": 0.33
+    },
+	{
+      "name": "Smooth Hoperator",
+      "alcohol": 6.0,
+      "taste": [ "kellemes", "konnyed", "konnyen_ihato", "gyumolcsos", "frissito"],
+      "origin": "magyar",
+      "type": [ "ale", "ipa", "New-England IPA"],
+      "manufacturer": "Mad Scientist",
+      "consumption": "ivosor",
+      "price": 900,
+      "quality": 7.0,
+      "acquisition": [ "Online", "InterSpar" ],
+      "packformat": 0.44
+    },
     {
       "name": "Apostel Weissbier",
       "alcohol": 5.3,
@@ -275,7 +301,7 @@
       "packformat": 0.5
     },
     {
-      "name": "Egger",
+      "name": "Egger Bock",
       "alcohol": 7.2,
       "taste": [ "Eros", "kicst_alcoholos", "edeskes iz" ],
       "type": [ "Lager", "BAK" ],
@@ -1274,7 +1300,7 @@
     {
       "name": "Pecsi APA",
       "alcohol": 5.0,
-      "taste": [ "Citrusos", " kellemetlül keseru utoiz" ],
+      "taste": [ "Citrusos", "kellemetlül keseru utoiz" ],
       "origin": "magyar",
       "type": [ "Ale", "American Pale Ale" ],
       "manufacturer": "Pecsi",
@@ -1287,7 +1313,7 @@
     {
       "name": "Popstar",
       "alcohol": 6.0,
-      "taste": [ "Kozepesen keseru", " definitív IPA iz. kellemes" ],
+      "taste": [ "Kozepesen keseru", "könnyen iható", "kellemes" ],
       "origin": "magyar",
       "type": [ "Ale", "IPA" ],
       "manufacturer": "Mad Scientist",

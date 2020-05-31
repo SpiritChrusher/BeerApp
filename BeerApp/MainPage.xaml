@@ -14,11 +14,25 @@
 
         <Entry x:Name="beername" Completed="beername_Completed" 
                IsPassword="False" Placeholder="enter beername here!"  
-               Margin="40, 30, 0, 30"/>
+               Margin="50, 30, 50, 25"/>
 
-        <Label x:Name="beerinfos"  Text="Beerdata will be here!" HorizontalOptions="Center" FontSize="20"
-           VerticalOptions="CenterAndExpand"/>
-
-        <Button x:Name="tosecond" Text="Beerlist" Clicked="tosecond_Clicked" Margin="0, 30, 20, 30"/>
-    </StackLayout>
+        <Label x:Name="beerinfos"  Text="Beerdata will be here!" 
+               HorizontalOptions="Center" FontSize="20"
+           VerticalOptions="CenterAndExpand" Margin="10, 0, 10, 0"/>
+        
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="tosecond" Text="Beerlist" 
+                    Clicked="tosecond_Clicked" Margin="35, 30, 35, 25" Grid.Column="0"/>
+                
+            <Button x:Name="favorites" Text="Favorites" Clicked="favorites_Clicked"  
+                    Margin="35, 30, 35, 25" Grid.Column="1"/>
+        </Grid>
+        </StackLayout>
 </ContentPage>
