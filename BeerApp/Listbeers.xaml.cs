@@ -18,19 +18,35 @@ namespace BeerApp
     {
         private ObservableCollection<BeerPOJO> _rootobj;
 
+        private List<BeerPOJO> list;
+
         public Listbeers(List<BeerPOJO> lista)
         {
             InitializeComponent();
-
+            list = lista;
             _rootobj = new ObservableCollection<BeerPOJO>(lista.OrderBy(x => x.name).ToList());
             MyListView.ItemsSource = _rootobj;
             
         }
 
+        private void checker_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            for (int x = 0; x < _rootobj.Count; x++)
+            {
+                _rootobj[x].IsChecked = e.Value;
+            }
+        }
 
+        private async void back_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
+        }
 
-
-
-
+        protected override bool OnBackButtonPressed()
+        {
+            new MainPage(list);
+            base.OnBackButtonPressed();
+            return false;
+        }
     }
 }

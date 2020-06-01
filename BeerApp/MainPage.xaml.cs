@@ -22,10 +22,16 @@ namespace BeerApp
     {
 
         private List<BeerPOJO> lista;
+       
         public MainPage()
         {
             InitializeComponent();
             lista = GetJson();
+        }
+
+        public MainPage(List<BeerPOJO> list)
+        {
+           lista = list;
         }
 
         private List<BeerPOJO> GetJson()
@@ -35,7 +41,7 @@ namespace BeerApp
             var current = Connectivity.NetworkAccess;
             if (current == NetworkAccess.Internet)
             {
-                   String url = "https://gist.githubusercontent.com/SpiritChrusher/ad7e8ab75c68d25a27fc3e9c78c2222c/raw/c1c49fc1a856dd40fa094e3c0c15c5c7b27514f2/Allbeers.json";
+                   String url = "https://raw.githubusercontent.com/SpiritChrusher/FavoriteBeer/master/src/main/Allbeers.json";
                    System.Net.WebClient client = new System.Net.WebClient();
                    String json = client.DownloadString(url);
 
