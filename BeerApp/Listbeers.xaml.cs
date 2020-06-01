@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace BeerApp
@@ -26,15 +27,14 @@ namespace BeerApp
             list = lista;
             _rootobj = new ObservableCollection<BeerPOJO>(lista.OrderBy(x => x.name).ToList());
             MyListView.ItemsSource = _rootobj;
-            
         }
 
         private void checker_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            for (int x = 0; x < _rootobj.Count; x++)
-            {
-                _rootobj[x].IsChecked = e.Value;
-            }
+
+            var checkbox = (CheckBox)sender;
+            var obj = checkbox.BindingContext as BeerPOJO;
+            lfavorite.Text = $"nev: {obj.name}, {obj.IsChecked}";
         }
 
         private async void back_Clicked(object sender, EventArgs e)

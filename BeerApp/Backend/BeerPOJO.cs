@@ -92,7 +92,7 @@ namespace BeerApp
               return $"name: {name}\nalcohol: {alcohol}%\ntaste: {string.Join(", ", taste)} " +
                   $"\norigin: {origin} \ntype: {type[type.Count - 1]} \nmanufacturer: {manufacturer}\n " +
                   $"consumption:  {consumption}\n price: {price}\nquality: {quality} pont" +
-                  $"\nacquisition: {string.Join(", ", acquisition)}\npack: {packformat}\tfavorite: {Isfavorite}";
+                  $"\nacquisition: {string.Join(", ", acquisition)}\npack: {packformat}\tfavorite: {IsChecked}";
           }
        
      }

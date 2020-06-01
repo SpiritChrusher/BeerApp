@@ -12,9 +12,16 @@ namespace BeerApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Favorites : ContentPage
     {
+        private List<BeerPOJO> favoritelist;
+
         public Favorites()
         {
             InitializeComponent();
+        }
+
+        public Favorites(List<BeerPOJO> favoritelist)
+        {
+            this.favoritelist = favoritelist;
         }
     }
 }

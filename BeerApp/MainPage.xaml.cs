@@ -108,9 +108,20 @@ namespace BeerApp
             }
         }
 
-        private void favorites_Clicked(object sender, EventArgs e)
+        private async void favorites_Clicked(object sender, EventArgs e)
         {
-            
+            List<BeerPOJO> favoritelist = new List<BeerPOJO>();
+
+            foreach (var item in lista)
+            {
+                if (item.IsChecked == true)
+                {
+                    favoritelist.Add(item);
+                }
+            }
+            await Navigation.PushAsync(new Favorites(favoritelist));
+
+
         }
     }
 }
