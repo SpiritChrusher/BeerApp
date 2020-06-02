@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BeerApp.Backend;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,22 +26,18 @@ namespace BeerApp
         {
             InitializeComponent();
             list = lista;
-            _rootobj = new ObservableCollection<BeerPOJO>(lista.OrderBy(x => x.name).ToList());
+            _rootobj = new ObservableCollection<BeerPOJO>(list.OrderBy(x => x.name).ToList());
             MyListView.ItemsSource = _rootobj;
+
         }
 
-        private void checker_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
+        /*  private void checker_CheckedChanged(object sender, CheckedChangedEventArgs e)
+          {
+        CheckedChanged="checker_CheckedChanged"
+              var checkbox = (CheckBox)sender;
+              var obj = checkbox.BindingContext as BeerPOJO;
+          }*/
 
-            var checkbox = (CheckBox)sender;
-            var obj = checkbox.BindingContext as BeerPOJO;
-            lfavorite.Text = $"nev: {obj.name}, {obj.IsChecked}";
-        }
-
-        private async void back_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopToRootAsync();
-        }
 
         protected override bool OnBackButtonPressed()
         {

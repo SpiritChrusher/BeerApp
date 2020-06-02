@@ -1,9 +1,6 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Runtime.CompilerServices;
 
 namespace BeerApp
@@ -34,6 +31,8 @@ namespace BeerApp
 
         public bool Isfavorite { get; set; }
 
+        public bool IsVisible { get; set; }
+
         public BeerPOJO() { }
 
         public BeerPOJO(string aname, decimal aalcohol, List<string> ataste, string aorigin, List<string> atype,
@@ -50,10 +49,13 @@ namespace BeerApp
             quality = aquality;
             acquisition = aacquistion;
             packformat = apackformat;
+            IsVisible = false;
           
            
         }
         public string Displayquality => $"Quality: {quality}";
+
+        
 
         public string Displaytype => $"{type[type.Count - 1]}";
 
@@ -80,11 +82,12 @@ namespace BeerApp
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-    
 
 
-
-
+        public string DisplayAll => $"alcohol: { alcohol}%\ntaste: { string.Join(", ", taste)}" +
+                  $"\norigin: {origin} \ntype: {type[type.Count - 1]} \nmanufacturer: {manufacturer}\n " +
+                  $"consumption:  {consumption}\n price: {price}\nquality: {quality} pont" +
+                  $"\nacquisition: {string.Join(", ", acquisition)}\npack: {packformat}\tfavorite: {IsChecked}";
 
 
     public override string ToString()

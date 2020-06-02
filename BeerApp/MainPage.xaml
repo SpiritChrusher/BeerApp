@@ -8,33 +8,48 @@
               NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False">
 
-    <StackLayout>
+    
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
 
-        <Label Text="BeerSearch App" 
-           HorizontalOptions="Center"
-           VerticalOptions="Center" FontSize="18"/>
-
+        <Label x:Name="mainlabel" Text="Kristof's BeerApp" Grid.Row="0" HorizontalOptions="Center" FontSize="16"/>
+        <Switch Grid.Row="0" HorizontalOptions="End"/>
         <Entry x:Name="beername" Completed="beername_Completed" 
-               IsPassword="False" Placeholder="enter beername here!"  
-               Margin="50, 30, 50, 25"/>
+               IsPassword="False" Placeholder="enter beername here!" 
+               HorizontalTextAlignment="Center" Margin="55, 20, 55, 10" Grid.Row="1"/>
+        <ListView x:Name="MyListView" Grid.Row="2" HorizontalOptions="FillAndExpand" 
+                      Footer="" HasUnevenRows="True" ItemTapped="MyListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid HorizontalOptions="FillAndExpand" Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding name}"
+                                   FontSize="Medium" Grid.Row="0"/>
 
-        <Label x:Name="beerinfos"  Text="Beerdata will be here!" 
-               HorizontalOptions="Center" FontSize="20"
-           VerticalOptions="CenterAndExpand" Margin="10, 0, 10, 0"/>
-        
-            <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="tosecond" Text="Beerlist" 
-                    Clicked="tosecond_Clicked" Margin="35, 30, 35, 25" Grid.Column="0"/>
-                
-            <Button x:Name="favorites" Text="Favorites" Clicked="favorites_Clicked"  
-                    Margin="35, 30, 35, 25" Grid.Column="1"/>
-        </Grid>
-        </StackLayout>
+                            <Label Text="{Binding DisplayAll}" IsVisible="{Binding IsVisible}" Grid.Row="1" FontSize="16"/>
+                        </Grid>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="tosecond" Text="Beerlist" Grid.Row="3"
+                    Clicked="tosecond_Clicked" Margin="35, 10, 35, 25" HorizontalOptions="Start" WidthRequest="120"/>
+
+        <Button x:Name="favorites" Text="Favorites" Clicked="favorites_Clicked"  
+                    Margin="35, 10, 35, 25" Grid.Row="3" HorizontalOptions="End" WidthRequest="120"/>
+    </Grid>
+    
+
+
 </ContentPage>

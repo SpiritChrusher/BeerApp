@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using BeerApp.Backend;
 using Xamarin.Essentials;
 using System.Net.Http;
+using System.Collections.ObjectModel;
 
 namespace BeerApp
 {
@@ -21,17 +22,21 @@ namespace BeerApp
     public partial class MainPage : ContentPage
     {
 
-        private List<BeerPOJO> lista;
+        private List<BeerPOJO> beerlist;
+
+      
+        public ObservableCollection<BeerPOJO> Expandinglist {get; set;}
        
         public MainPage()
         {
             InitializeComponent();
-            lista = GetJson();
+            beerlist = GetJson();
+         // Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.OrderBy(x => x.alcohol).ToList());
         }
 
         public MainPage(List<BeerPOJO> list)
         {
-           lista = list;
+           beerlist = list;
         }
 
         private List<BeerPOJO> GetJson()
@@ -49,7 +54,7 @@ namespace BeerApp
             }
             else
             {
-                beerinfos.Text = "no internet, only local file is working!";
+                mainlabel.Text = "no internet, only local file is working!";
                 jsonbeer = LocalJsonData();
             }
             return jsonbeer;
@@ -77,42 +82,47 @@ namespace BeerApp
                 var jsonString = reader.ReadToEnd();
 
                 Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(jsonString);
-
             }
             return Beerslist;
         }
             async private void tosecond_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Listbeers(lista));
+            await Navigation.PushAsync(new Listbeers(beerlist));
           
         }
 
         private void beername_Completed(object sender, EventArgs e)
         {
          
-           if (beername.Text.Length > 0)
+           if (beername.Text != null)
             {
                 if (beername.Text.EndsWith(" "))
                 {
                   string newname = beername.Text.Remove(beername.Text.Length-1);
-                    beerinfos.Text = Search.BeerSearch(lista, newname);
+
+                    Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(x => x.name).ToList());
+                    MyListView.ItemsSource = Expandinglist;
+                   // BindingContext = Expandinglist;
                 }
                 else
                 {
-                beerinfos.Text = Search.BeerSearch(lista, beername.Text);
+                    Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(x => x.name).ToList());
+                    MyListView.ItemsSource = Expandinglist;
+                    //BindingContext = Expandinglist;
                 }
             }
             else
             {
-                beerinfos.Text = "Not enough characters";
+                mainlabel.Text = "No enough characters";
             }
+            
         }
 
         private async void favorites_Clicked(object sender, EventArgs e)
         {
             List<BeerPOJO> favoritelist = new List<BeerPOJO>();
 
-            foreach (var item in lista)
+            foreach (var item in beerlist)
             {
                 if (item.IsChecked == true)
                 {
@@ -122,6 +132,20 @@ namespace BeerApp
             await Navigation.PushAsync(new Favorites(favoritelist));
 
 
+        }
+
+        private void MyListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (Expandinglist[e.ItemIndex].IsVisible == false)
+            {
+                Expandinglist[e.ItemIndex].IsVisible = true;
+              //  mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,{Expandinglist[e.ItemIndex].IsVisible}";
+            }
+            else
+            {
+                Expandinglist[e.ItemIndex].IsVisible = false;
+               // mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,{Expandinglist[e.ItemIndex].IsVisible}";
+            }
         }
     }
 }
