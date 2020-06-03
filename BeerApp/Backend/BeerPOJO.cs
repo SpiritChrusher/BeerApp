@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -7,6 +8,10 @@ namespace BeerApp
 {
     public class BeerPOJO : INotifyPropertyChanged
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        [MaxLength(40)]
         public string name { get; set; }
 
         public decimal alcohol { get; set; }
@@ -35,13 +40,13 @@ namespace BeerApp
         {
             get
             {
-                return isChecked;
+                return _IsVisible;
             }
             set
             {
-                if (isChecked != value)
+                if (_IsVisible != value)
                 {
-                    isChecked = value;
+                    _IsVisible = value;
                     NotifyPropertyChanged();
                 }
             }

@@ -128,12 +128,12 @@ namespace BeerApp
             if (Expandinglist[e.ItemIndex].IsVisible == false)
             {
                 Expandinglist[e.ItemIndex].IsVisible = true;
-                mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,{Expandinglist[e.ItemIndex].IsVisible}";
+                mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,vis? {Expandinglist[e.ItemIndex].IsVisible}, chec?  {Expandinglist[e.ItemIndex].IsChecked}";
             }
             else
             {
                 Expandinglist[e.ItemIndex].IsVisible = false;
-                mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,{Expandinglist[e.ItemIndex].IsVisible}";
+                mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,vis? {Expandinglist[e.ItemIndex].IsVisible}, chec?  {Expandinglist[e.ItemIndex].IsChecked}";
             }
         }
     }
