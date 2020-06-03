@@ -5,9 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="BeerApp.Listbeers"
-             NavigationPage.HasBackButton="True"
-             NavigationPage.HasNavigationBar="True"
-             NavigationPage.BackButtonTitle="Vissza"
+              NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False"
              >
     <Grid>
         <Grid>

@@ -31,19 +31,5 @@ namespace BeerApp
 
         }
 
-        /*  private void checker_CheckedChanged(object sender, CheckedChangedEventArgs e)
-          {
-        CheckedChanged="checker_CheckedChanged"
-              var checkbox = (CheckBox)sender;
-              var obj = checkbox.BindingContext as BeerPOJO;
-          }*/
-
-
-        protected override bool OnBackButtonPressed()
-        {
-            new MainPage(list);
-            base.OnBackButtonPressed();
-            return false;
-        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,16 +13,19 @@ namespace BeerApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Favorites : ContentPage
     {
-        private List<BeerPOJO> favoritelist;
+        private ObservableCollection<BeerPOJO> Favoriteslist { get; set; }
 
-        public Favorites()
-        {
-            InitializeComponent();
-        }
+        private List<BeerPOJO> allbeers;
 
+       
         public Favorites(List<BeerPOJO> favoritelist)
         {
-            this.favoritelist = favoritelist;
+            allbeers = favoritelist;
+            InitializeComponent();
+            Favoriteslist = new ObservableCollection<BeerPOJO>(favoritelist.Where(x => x.IsVisible == true));
+            MyListView.ItemsSource = Favoriteslist;
         }
+
+
     }
 }

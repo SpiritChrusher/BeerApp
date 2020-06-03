@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace BeerApp
 {
-    public class BeerPOJO
+    public class BeerPOJO : INotifyPropertyChanged
     {
         public string name { get; set; }
 
@@ -29,9 +29,25 @@ namespace BeerApp
 
         public decimal packformat;
 
-        public bool Isfavorite { get; set; }
+        private bool _IsVisible { get; set; }
 
-        public bool IsVisible { get; set; }
+        public bool IsVisible
+        {
+            get
+            {
+                return isChecked;
+            }
+            set
+            {
+                if (isChecked != value)
+                {
+                    isChecked = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
 
         public BeerPOJO() { }
 

@@ -25,13 +25,13 @@ namespace BeerApp
         private List<BeerPOJO> beerlist;
 
       
-        public ObservableCollection<BeerPOJO> Expandinglist {get; set;}
-       
+        private ObservableCollection<BeerPOJO> Expandinglist {get; set;}
+
+
         public MainPage()
         {
             InitializeComponent();
             beerlist = GetJson();
-         // Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.OrderBy(x => x.alcohol).ToList());
         }
 
         public MainPage(List<BeerPOJO> list)
@@ -85,7 +85,7 @@ namespace BeerApp
             }
             return Beerslist;
         }
-            async private void tosecond_Clicked(object sender, EventArgs e)
+            async private void ToListbeers_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Listbeers(beerlist));
           
@@ -102,13 +102,13 @@ namespace BeerApp
 
                     Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(x => x.name).ToList());
                     MyListView.ItemsSource = Expandinglist;
-                   // BindingContext = Expandinglist;
+                  
                 }
                 else
                 {
                     Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(x => x.name).ToList());
                     MyListView.ItemsSource = Expandinglist;
-                    //BindingContext = Expandinglist;
+                   
                 }
             }
             else
@@ -118,20 +118,9 @@ namespace BeerApp
             
         }
 
-        private async void favorites_Clicked(object sender, EventArgs e)
+        private async void Favorites_Clicked(object sender, EventArgs e)
         {
-            List<BeerPOJO> favoritelist = new List<BeerPOJO>();
-
-            foreach (var item in beerlist)
-            {
-                if (item.IsChecked == true)
-                {
-                    favoritelist.Add(item);
-                }
-            }
-            await Navigation.PushAsync(new Favorites(favoritelist));
-
-
+            await Navigation.PushAsync(new Favorites(beerlist));
         }
 
         private void MyListView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -139,12 +128,12 @@ namespace BeerApp
             if (Expandinglist[e.ItemIndex].IsVisible == false)
             {
                 Expandinglist[e.ItemIndex].IsVisible = true;
-              //  mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,{Expandinglist[e.ItemIndex].IsVisible}";
+                mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,{Expandinglist[e.ItemIndex].IsVisible}";
             }
             else
             {
                 Expandinglist[e.ItemIndex].IsVisible = false;
-               // mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,{Expandinglist[e.ItemIndex].IsVisible}";
+                mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,{Expandinglist[e.ItemIndex].IsVisible}";
             }
         }
     }

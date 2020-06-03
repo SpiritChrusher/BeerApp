@@ -43,10 +43,9 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button x:Name="tosecond" Text="Beerlist" Grid.Row="3"
-                    Clicked="tosecond_Clicked" Margin="35, 10, 35, 25" HorizontalOptions="Start" WidthRequest="120"/>
-
-        <Button x:Name="favorites" Text="Favorites" Clicked="favorites_Clicked"  
+        <Button x:Name="ToListbeers" Text="Beerlist" Grid.Row="3"
+                    Clicked="ToListbeers_Clicked" Margin="35, 10, 35, 25" HorizontalOptions="Start" WidthRequest="120"/>
+        <Button x:Name="Favorites" Text="Favorites" Clicked="Favorites_Clicked"  
                     Margin="35, 10, 35, 25" Grid.Row="3" HorizontalOptions="End" WidthRequest="120"/>
     </Grid>
     
