@@ -1,18 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using BeerApp;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using System;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BeerApp.Backend;
 using Xamarin.Essentials;
-using System.Net.Http;
 using System.Collections.ObjectModel;
+using SQLite;
 
 namespace BeerApp
 {
@@ -27,11 +24,31 @@ namespace BeerApp
       
         private ObservableCollection<BeerPOJO> Expandinglist {get; set;}
 
-
         public MainPage()
         {
             InitializeComponent();
             beerlist = GetJson();
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            {
+                conn.CreateTable<BeerSQL>();
+                var beers = conn.Table<BeerSQL>().ToList();
+                if(beers.Count > 0)
+                {
+                    foreach (var item in beerlist)
+                    {
+                        foreach (var item2 in beers)
+                        {
+                            if(item.name == item2.Name)
+                            {
+                                item.IsChecked = true;
+                            }
+                        }
+                    }
+                }
+
+                
+            }
+           
         }
 
         public MainPage(List<BeerPOJO> list)
@@ -128,12 +145,10 @@ namespace BeerApp
             if (Expandinglist[e.ItemIndex].IsVisible == false)
             {
                 Expandinglist[e.ItemIndex].IsVisible = true;
-                mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,vis? {Expandinglist[e.ItemIndex].IsVisible}, chec?  {Expandinglist[e.ItemIndex].IsChecked}";
             }
             else
             {
                 Expandinglist[e.ItemIndex].IsVisible = false;
-                mainlabel.Text = $"name:{Expandinglist[e.ItemIndex].name} ,vis? {Expandinglist[e.ItemIndex].IsVisible}, chec?  {Expandinglist[e.ItemIndex].IsChecked}";
             }
         }
     }

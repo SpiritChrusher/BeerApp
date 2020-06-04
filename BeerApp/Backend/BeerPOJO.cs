@@ -1,5 +1,4 @@
-﻿using SQLite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -8,10 +7,8 @@ namespace BeerApp
 {
     public class BeerPOJO : INotifyPropertyChanged
     {
-        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        [MaxLength(40)]
         public string name { get; set; }
 
         public decimal alcohol { get; set; }
@@ -105,18 +102,18 @@ namespace BeerApp
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public string DisplayAll => $"alcohol: { alcohol}%\ntaste: { string.Join(", ", taste)}" +
-                  $"\norigin: {origin} \ntype: {type[type.Count - 1]} \nmanufacturer: {manufacturer}\n " +
-                  $"consumption:  {consumption}\n price: {price}\nquality: {quality} pont" +
-                  $"\nacquisition: {string.Join(", ", acquisition)}\npack: {packformat}\tfavorite: {IsChecked}";
+        public string DisplayAll => $"alkoholfok: { alcohol}%\nízvilág: { string.Join(", ", taste)}" +
+                  $"\nszármazás: {origin} \ntípus: {type[type.Count - 1]} \ngyártó: {manufacturer}\n " +
+                  $"fogyasztás:  {consumption}\n ár: {price}\nminőség: {quality} pont" +
+                  $"\nbeszerzési hely(ek): {string.Join(", ", acquisition)}\nkiszerelés: {packformat} liter";
 
 
     public override string ToString()
           {
-              return $"name: {name}\nalcohol: {alcohol}%\ntaste: {string.Join(", ", taste)} " +
-                  $"\norigin: {origin} \ntype: {type[type.Count - 1]} \nmanufacturer: {manufacturer}\n " +
-                  $"consumption:  {consumption}\n price: {price}\nquality: {quality} pont" +
-                  $"\nacquisition: {string.Join(", ", acquisition)}\npack: {packformat}\tfavorite: {IsChecked}";
+              return $"name: {name}\nalkoholfok: {alcohol}%\ntaste: {string.Join(", ", taste)} " +
+                  $"\nszármazás: {origin} \ntípus: {type[type.Count - 1]} \ngyártó: {manufacturer}\n " +
+                  $"fogyasztás:  {consumption}\n ár: {price}\nminőség: {quality} pont" +
+                  $"\nbeszerzési hely(ek): {string.Join(", ", acquisition)}\nkiszerelés: {packformat} liter";
           }
        
      }
