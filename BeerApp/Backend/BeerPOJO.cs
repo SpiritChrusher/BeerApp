@@ -67,9 +67,7 @@ namespace BeerApp
             quality = aquality;
             acquisition = aacquistion;
             packformat = apackformat;
-            IsVisible = false;
-          
-           
+            IsVisible = false;       
         }
         public string Displayquality => $"Quality: {quality}";
 
@@ -102,7 +100,7 @@ namespace BeerApp
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public string DisplayAll => $"alkoholfok: { alcohol}%\nízvilág: { string.Join(", ", taste)}" +
+        public string DisplayAll => $"alkoholfok: {alcohol}%\nízvilág: {string.Join(", ", taste)}" +
                   $"\nszármazás: {origin} \ntípus: {type[type.Count - 1]} \ngyártó: {manufacturer}\n " +
                   $"fogyasztás:  {consumption}\n ár: {price}\nminőség: {quality} pont" +
                   $"\nbeszerzési hely(ek): {string.Join(", ", acquisition)}\nkiszerelés: {packformat} liter";

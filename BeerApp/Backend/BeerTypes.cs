@@ -18,9 +18,9 @@ namespace BeerApp.Backend
 
     class BeerTypes
     {
-       public int Typepoints(BeerPOJO beer)
+        public int Typepoints(BeerPOJO beer)
         {
-         
+
             int point = 0;
 
             foreach (var item in beer.type)

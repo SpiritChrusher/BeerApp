@@ -13,15 +13,11 @@ using SQLite;
 
 namespace BeerApp
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-
         private List<BeerPOJO> beerlist;
 
-      
         private ObservableCollection<BeerPOJO> Expandinglist {get; set;}
 
         public MainPage()
@@ -44,11 +40,8 @@ namespace BeerApp
                             }
                         }
                     }
-                }
-
-                
+                }                
             }
-           
         }
 
         public MainPage(List<BeerPOJO> list)
@@ -67,11 +60,13 @@ namespace BeerApp
                    System.Net.WebClient client = new System.Net.WebClient();
                    String json = client.DownloadString(url);
 
+                Application.Current.Properties["Everybeer"] = json;
+
                 jsonbeer = ReadBeer(json);
             }
             else
             {
-                mainlabel.Text = "no internet, only local file is working!";
+                mainlabel.Text = "No internet, only local file is working!";
                 jsonbeer = LocalJsonData();
             }
             return jsonbeer;
@@ -88,18 +83,11 @@ namespace BeerApp
 
         List<BeerPOJO> LocalJsonData()
         {
-            List<BeerPOJO> Beerslist = new List<BeerPOJO>();
-            string jsonfilename = "Allbeers.json";
+            List<BeerPOJO> Beerslist;
 
-            var assembly = typeof(MainPage).GetTypeInfo().Assembly;
+            var jsonString = Application.Current.Properties["Everybeer"].ToString();
 
-            Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{jsonfilename}");
-            using (var reader = new StreamReader(stream))
-            {
-                var jsonString = reader.ReadToEnd();
-
-                Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(jsonString);
-            }
+            Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(jsonString);
             return Beerslist;
         }
             async private void ToListbeers_Clicked(object sender, EventArgs e)
