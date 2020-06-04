@@ -9,10 +9,13 @@ namespace BeerApp.Backend
         Radler = 2,
         Lager,
         Hoplager,
+        Munchener,
         IPA = 10,
         Session_IPA = 10,
         Imperial_IPA = 8,
         Imperial_Stout = 10,
+        Russian_Imperial_Stout,
+
 
     }
 
@@ -27,7 +30,7 @@ namespace BeerApp.Backend
             {
                 foreach (var item2 in Enum.GetValues(typeof(Types)))
                 {
-                    if (item.ToLower() == item2.ToString().ToLower())
+                    if (item.ToLower() == item2.ToString().Replace('_',' ').ToLower())
                     {
                         point += (int)item2;
                     }

@@ -102,7 +102,7 @@ namespace BeerApp
 
         public string DisplayAll => $"alkoholfok: {alcohol}%\nízvilág: {string.Join(", ", taste)}" +
                   $"\nszármazás: {origin} \ntípus: {type[type.Count - 1]} \ngyártó: {manufacturer}\n " +
-                  $"fogyasztás:  {consumption}\n ár: {price}\nminőség: {quality} pont" +
+                  $"fogyasztás:  {consumption}\n ár: {price} Forint\nminőség: {quality} pont" +
                   $"\nbeszerzési hely(ek): {string.Join(", ", acquisition)}\nkiszerelés: {packformat} liter";
 
 
@@ -110,7 +110,7 @@ namespace BeerApp
           {
               return $"name: {name}\nalkoholfok: {alcohol}%\ntaste: {string.Join(", ", taste)} " +
                   $"\nszármazás: {origin} \ntípus: {type[type.Count - 1]} \ngyártó: {manufacturer}\n " +
-                  $"fogyasztás:  {consumption}\n ár: {price}\nminőség: {quality} pont" +
+                  $"fogyasztás:  {consumption}\n ár: {price} Forint\nminőség: {quality} pont" +
                   $"\nbeszerzési hely(ek): {string.Join(", ", acquisition)}\nkiszerelés: {packformat} liter";
           }
        
