@@ -69,7 +69,7 @@ namespace BeerApp
             }
             else
             {
-                mainlabel.Text = "No internet, only local file is working!";
+                mainlabel.Text = "No internet, working with local file!";
                 jsonbeer = LocalJsonData();
             }
             return jsonbeer;
@@ -128,7 +128,16 @@ namespace BeerApp
                             Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
                             break;
                     }
-                    MyListView.ItemsSource = Expandinglist;
+                    if (Expandinglist.Count > 0)
+                    {
+                        MyListView.ItemsSource = Expandinglist;
+                    }
+                    else
+                    {
+                        MyListView.ItemsSource = null;
+                        mainlabel.Text = "No beer found, try something else";
+                    }
+                        
                 }
                 else
                 {
@@ -150,9 +159,15 @@ namespace BeerApp
                             Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
                             break;
                     }
-
-                    MyListView.ItemsSource = Expandinglist;
-
+                    if (Expandinglist.Count > 0)
+                    {
+                        MyListView.ItemsSource = Expandinglist;
+                    }
+                    else
+                    {
+                        MyListView.ItemsSource = null;
+                        mainlabel.Text = "No beer found, try something else";
+                    }
                 }
             }
             else
