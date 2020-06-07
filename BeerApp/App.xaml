@@ -7,5 +7,12 @@
              x:Class="BeerApp.App">
     <Application.Resources>
 
+        <ResourceDictionary>
+            <Color x:Key="MainBackGround">White</Color>
+            <Color x:Key="NormalBackGround">Transparent</Color>
+            <Color x:Key="FontColor">Black</Color>
+        </ResourceDictionary>
+        
+        
     </Application.Resources>
 </Application>

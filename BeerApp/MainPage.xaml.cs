@@ -10,15 +10,18 @@ using BeerApp.Backend;
 using Xamarin.Essentials;
 using System.Collections.ObjectModel;
 using SQLite;
+using System.Security.Cryptography.X509Certificates;
+using System.Globalization;
 
 namespace BeerApp
 {
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        private List<BeerPOJO> beerlist;
 
+        private List<BeerPOJO> beerlist;
         private ObservableCollection<BeerPOJO> Expandinglist {get; set;}
+
 
         public MainPage()
         {
@@ -46,7 +49,7 @@ namespace BeerApp
 
         public MainPage(List<BeerPOJO> list)
         {
-           beerlist = list;
+            beerlist = list;
         }
 
         private List<BeerPOJO> GetJson()
@@ -105,15 +108,51 @@ namespace BeerApp
                 {
                   string newname = beername.Text.Remove(beername.Text.Length-1);
 
-                    Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(x => x.name).ToList());
+                    switch (seachby.SelectedIndex)
+                    {
+                        case 0:
+                            //Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.name.Contains(beername.Text)).OrderBy(x => x.name));
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
+                            break;
+                        case 1:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.type[x.type.Count - 1].ToLower() == beername.Text.ToLower()).OrderBy(y => y.name));
+                            break;
+                        case 2:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.origin.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
+                            break;
+                        case 3:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.manufacturer.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
+                            break;
+
+                        default:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
+                            break;
+                    }
                     MyListView.ItemsSource = Expandinglist;
-                  
                 }
                 else
                 {
-                    Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(x => x.name).ToList());
+                    switch (seachby.SelectedIndex)
+                    {
+                        case 0:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
+                            break;
+                        case 1:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.type[x.type.Count - 1].ToLower() == beername.Text.ToLower()).OrderBy(y => y.name));
+                            break;
+                        case 2:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.origin.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
+                           break;
+                        case 3:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.manufacturer.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
+                            break;
+                        default:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
+                            break;
+                    }
+
                     MyListView.ItemsSource = Expandinglist;
-                   
+
                 }
             }
             else
@@ -137,6 +176,23 @@ namespace BeerApp
             else
             {
                 Expandinglist[e.ItemIndex].IsVisible = false;
+            }
+        }
+
+        private void switcher_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (e.Value == true)
+            {
+                App.Current.Resources["MainBackGround"] = Color.Black;
+                App.Current.Resources["FontColor"] = Color.White;
+                App.Current.Resources["NormalBackGround"] = Color.White;
+
+            }
+            else
+            {
+                App.Current.Resources["MainBackGround"] = Color.White;
+                App.Current.Resources["FontColor"] = Color.Black;
+                App.Current.Resources["NormalBackGround"] = Color.Gray;
             }
         }
     }

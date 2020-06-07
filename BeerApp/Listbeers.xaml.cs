@@ -28,8 +28,6 @@ namespace BeerApp
             list = lista;
             _rootobj = new ObservableCollection<BeerPOJO>(list.OrderBy(x => x.name).ToList());
             MyListView.ItemsSource = _rootobj;
-
         }
-
     }
 }

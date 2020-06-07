@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="BeerApp.Favorites"
              NavigationPage.HasBackButton="False"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource MainBackGround}">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -28,7 +29,7 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                             <Label Text="{Binding name}" HorizontalOptions="StartAndExpand" Grid.Row="0" 
-                                       TextColor="Blue"  FontAttributes="Bold"/>
+                                       TextColor="{DynamicResource FontColor}"  FontAttributes="Bold"/>
                             <Label Text= "{Binding Displaytype}" 
                                        HorizontalOptions="StartAndExpand" Grid.Row="1" TextColor="Orange"  FontAttributes="Bold"/>
                             <Label Text="{Binding Displayquality}" HorizontalOptions="StartAndExpand"

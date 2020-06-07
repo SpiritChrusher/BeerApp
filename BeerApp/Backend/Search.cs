@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -8,8 +9,6 @@ namespace BeerApp.Backend
 {
     class Search
     {
-
-      
         public static string BeerSearch(List<BeerPOJO> allbeer ,string beername)
         {
             int point = 0;

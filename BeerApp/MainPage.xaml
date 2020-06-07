@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="BeerApp.MainPage"
               NavigationPage.HasBackButton="False"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource MainBackGround}">
 
     
         <Grid>
@@ -17,11 +18,26 @@
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="mainlabel" Text="Kristof's BeerApp" Grid.Row="0" HorizontalOptions="Center" FontSize="16"/>
-        <Switch Grid.Row="0" HorizontalOptions="End"/>
-        <Entry x:Name="beername" Completed="beername_Completed" 
+        <Label x:Name="mainlabel" TextColor="Blue" Text="Kristof's BeerApp" Grid.Row="0" HorizontalOptions="Center" FontSize="17"/>
+        <Switch Grid.Row="0" HorizontalOptions="End" Toggled="switcher_Toggled" x:Name="switcher"/>
+            
+        <Picker x:Name="seachby"
+        Title="select"
+        TitleColor="Brown" HorizontalOptions="Start"
+                Grid.Row="1" WidthRequest="100">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                    <x:String>név</x:String>
+                    <x:String>típus</x:String>
+                    <x:String>származás</x:String>
+                    <x:String>gyártó</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        <Entry x:Name="beername" Completed="beername_Completed"
                IsPassword="False" Placeholder="enter beername here!" 
-               HorizontalTextAlignment="Center" Margin="55, 20, 55, 10" Grid.Row="1"/>
+               HorizontalTextAlignment="Center" HorizontalOptions="EndAndExpand" Margin="10, 20, 10, 10" 
+               Grid.Row="1"  WidthRequest="260" BackgroundColor="{DynamicResource NormalBackGround}"/>
         <ListView x:Name="MyListView" Grid.Row="2" HorizontalOptions="FillAndExpand" 
                       Footer="" HasUnevenRows="True" ItemTapped="MyListView_ItemTapped">
             <ListView.ItemTemplate>
@@ -33,9 +49,9 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <Label Text="{Binding name}"
-                                   FontSize="Medium" Grid.Row="0"/>
+                                   FontSize="Medium" Grid.Row="0" TextColor="{DynamicResource FontColor}"/>
 
-                            <Label Text="{Binding DisplayAll}" IsVisible="{Binding IsVisible}" Grid.Row="1" FontSize="16"/>
+                            <Label Text="{Binding DisplayAll}" IsVisible="{Binding IsVisible}" Grid.Row="1" FontSize="17" />
                         </Grid>
                     </ViewCell>
 
