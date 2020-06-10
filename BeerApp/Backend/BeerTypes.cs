@@ -39,7 +39,7 @@ namespace BeerApp.Backend
             return point;
         }
 
-        public decimal Price_value()
+        public decimal Price_value( BeerPOJO currentbeer)
         {
             decimal value = 0;
 

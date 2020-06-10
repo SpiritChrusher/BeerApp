@@ -113,6 +113,8 @@ namespace BeerApp
                   $"fogyasztás:  {consumption}\n ár: {price} Forint\nminőség: {quality} pont" +
                   $"\nbeszerzési hely(ek): {string.Join(", ", acquisition)}\nkiszerelés: {packformat} liter";
           }
+
+        public string DisplayImportant => $"";
        
      }
 

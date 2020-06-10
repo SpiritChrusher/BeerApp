@@ -48,8 +48,27 @@ namespace BeerApp.Backend
                 }
             }
             return foundlist;
+        }
+
+        public static List<BeerPOJO> RecommendBeers(string entrybeers)
+        {
+            List<BeerPOJO> recommended = new List<BeerPOJO>();
+
+            string[] allbeers = entrybeers.Split(',');
+            foreach (var item in allbeers)
+            {
+                if (item[0] == ' ')
+                {
+                    item.Remove(0, 1);
+                }
+                //még cikluson belül minden sörnek összértéket számítani valami BeerType-os metódussal és listához adni
+                //aztán pedig linq-val érték szerint növekvő sorrendbe kell rakni és azt visszaadni.
+            }
 
 
+
+
+            return recommended;
         }
     }
 }
