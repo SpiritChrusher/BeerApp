@@ -15,7 +15,13 @@ namespace BeerApp.Backend
         Imperial_IPA = 8,
         Imperial_Stout = 10,
         Russian_Imperial_Stout,
+    }
 
+    enum Tastes
+    {
+        kellemes,
+        kicsit_keserű,
+        könnyen_iható,
 
     }
 

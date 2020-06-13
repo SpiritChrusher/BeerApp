@@ -23,9 +23,44 @@ namespace BeerApp
         private ObservableCollection<BeerPOJO> Expandinglist {get; set;}
 
 
+        private bool isDark;
+        public bool IsDark
+        {
+            get
+            {
+                return isDark;
+            }
+            set
+            {
+                if (isDark != value)
+                {
+                    isDark = value;
+
+                    if (IsDark)
+                    {
+                        App.Current.Resources["MainBackGround"] = Color.Black;
+                        App.Current.Resources["FontColor"] = Color.White;
+                        App.Current.Resources["NormalBackGround"] = Color.White;
+
+                    }
+                    else
+                    {
+                        App.Current.Resources["MainBackGround"] = Color.White;
+                        App.Current.Resources["FontColor"] = Color.Black;
+                        App.Current.Resources["NormalBackGround"] = Color.Gray;
+                    }
+                    Preferences.Set("darkmode", IsDark);
+                }
+            }
+        }
         public MainPage()
         {
+
             InitializeComponent();
+
+            IsDark = Preferences.Get("darkmode", true);
+            switcher.IsToggled = IsDark;
+
             beerlist = GetJson();
             using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
             {
@@ -46,6 +81,7 @@ namespace BeerApp
                 }                
             }
         }
+
 
         public MainPage(List<BeerPOJO> list)
         {
@@ -122,6 +158,9 @@ namespace BeerApp
                         case 3:
                             Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.manufacturer.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
                             break;
+                        case 4:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.PriceSearch(beerlist, beername.Text));
+                            break;
                         default:
                             Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
                             break;
@@ -170,6 +209,9 @@ namespace BeerApp
                         case 3:
                             Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.manufacturer.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
                             break;
+                        case 4:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.PriceSearch(beerlist, beername.Text));
+                            break;
                         default:
                             Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
                             break;
@@ -209,22 +251,11 @@ namespace BeerApp
             }
         }
 
-        private void switcher_Toggled(object sender, ToggledEventArgs e)
-        {
-            if (e.Value == true)
-            {
-                App.Current.Resources["MainBackGround"] = Color.Black;
-                App.Current.Resources["FontColor"] = Color.White;
-                App.Current.Resources["NormalBackGround"] = Color.White;
 
-            }
-            else
-            {
-                App.Current.Resources["MainBackGround"] = Color.White;
-                App.Current.Resources["FontColor"] = Color.Black;
-                App.Current.Resources["NormalBackGround"] = Color.Gray;
-            }
-        }
+          private void switcher_Toggled(object sender, ToggledEventArgs e)
+          {
+            IsDark = e.Value;
+          }
     }
 }
 

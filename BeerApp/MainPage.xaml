@@ -27,11 +27,12 @@
                 Grid.Row="1" WidthRequest="100">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
-                    <x:String>név</x:String>
-                    <x:String>típus</x:String>
-                    <x:String>származás</x:String>
-                    <x:String>gyártó</x:String>
-                    </x:Array>
+                    <x:String>név szerint</x:String>
+                    <x:String>típus szerint</x:String>
+                    <x:String>származás szerint</x:String>
+                    <x:String>gyártó szerint</x:String>
+                    <x:String>ár szerint</x:String>
+                </x:Array>
                 </Picker.ItemsSource>
             </Picker>
         <Entry x:Name="beername" Completed="beername_Completed"

@@ -23,7 +23,6 @@ namespace BeerApp.Droid
             string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string completePath = System.IO.Path.Combine(folderPath, fileName);
 
-
             LoadApplication(new App(completePath));
         }
 

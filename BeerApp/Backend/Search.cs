@@ -7,8 +7,34 @@ using System.Text;
 
 namespace BeerApp.Backend
 {
-    class Search
+    public static class Search
     {
+
+        public static List<BeerPOJO> PriceSearch(List<BeerPOJO> allbeer, string beertext)
+        {
+            List<BeerPOJO> valuebeers = new List<BeerPOJO>();
+
+            bool success = int.TryParse(beertext, out int beerprice);
+
+            
+
+            if (success)
+            {
+                /* foreach (var item in allbeer)
+                 {
+                     if (Math.Abs(beerprice - item.price) < beerprice*0.15)
+                     {
+                         valuebeers.Add(item);
+                     }
+                 }*/
+              valuebeers = allbeer.Where(x => (x.price - beerprice < beerprice * 0.15)).OrderBy(x => x.name).ToList();
+            }
+
+            else { return valuebeers;}
+
+            return valuebeers;
+        }
+
         public static string BeerSearch(List<BeerPOJO> allbeer ,string beername)
         {
             int point = 0;

@@ -114,7 +114,7 @@ namespace BeerApp
                   $"\nbeszerzési hely(ek): {string.Join(", ", acquisition)}\nkiszerelés: {packformat} liter";
           }
 
-        public string DisplayImportant => $"";
+        public string DisplayImportant => $"{alcohol}\n{Displayquality}";
        
      }
 
