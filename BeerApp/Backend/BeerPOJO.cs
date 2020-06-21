@@ -7,7 +7,7 @@ namespace BeerApp
 {
     public class BeerPOJO : INotifyPropertyChanged
     {
-        public int Id { get; set; }
+        public ushort Id { get; set; }
 
         public string name { get; set; }
 
@@ -23,7 +23,7 @@ namespace BeerApp
 
         public string consumption;
 
-        public int price;
+        public ushort price;
 
         public decimal quality;
 
@@ -54,7 +54,7 @@ namespace BeerApp
         public BeerPOJO() { }
 
         public BeerPOJO(string aname, decimal aalcohol, List<string> ataste, string aorigin, List<string> atype,
-            string amanufacturer, string aconsumption, int aprice, decimal aquality, List<string> aacquistion, decimal apackformat)
+            string amanufacturer, string aconsumption, ushort aprice, decimal aquality, List<string> aacquistion, decimal apackformat)
         {
             name = aname;
             alcohol = aalcohol;
@@ -99,6 +99,7 @@ namespace BeerApp
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public decimal Value { get; set; }
 
         public string DisplayAll => $"alkoholfok: {alcohol}%\nízvilág: {string.Join(", ", taste)}" +
                   $"\nszármazás: {origin} \ntípus: {type[type.Count - 1]} \ngyártó: {manufacturer}\n " +

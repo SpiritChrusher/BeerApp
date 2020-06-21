@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using System;
@@ -10,8 +9,8 @@ using BeerApp.Backend;
 using Xamarin.Essentials;
 using System.Collections.ObjectModel;
 using SQLite;
-using System.Security.Cryptography.X509Certificates;
 using System.Globalization;
+using System.Threading.Tasks;
 
 namespace BeerApp
 {
@@ -55,86 +54,56 @@ namespace BeerApp
         }
         public MainPage()
         {
-
             InitializeComponent();
-
+            Construct();
+          // await Task.Run(() => Construct()).Wait();
             IsDark = Preferences.Get("darkmode", true);
             switcher.IsToggled = IsDark;
+          
+        }
 
-            beerlist = GetJson();
+
+        private async Task Construct()
+        {
+            var current = Connectivity.NetworkAccess;
+
+            if (current == NetworkAccess.Internet)
+            {
+                beerlist = await Readfile.GetJson();
+                Application.Current.Properties["Everybeer"] = beerlist;
+            }
+            else
+            {
+                var jsonString = Application.Current.Properties["Everybeer"].ToString();
+                beerlist = await Readfile.LocalJsonData(jsonString);
+            }
+
             using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
             {
                 conn.CreateTable<BeerSQL>();
                 var beers = conn.Table<BeerSQL>().ToList();
-                if(beers.Count > 0)
+                if (beers.Count > 0)
                 {
                     foreach (var item in beerlist)
                     {
                         foreach (var item2 in beers)
                         {
-                            if(item.name == item2.Name)
+                            if (item.name == item2.Name)
                             {
                                 item.IsChecked = true;
                             }
                         }
                     }
-                }                
+                }
             }
         }
 
-
-        public MainPage(List<BeerPOJO> list)
-        {
-            beerlist = list;
-        }
-
-        private List<BeerPOJO> GetJson()
-        {
-            List<BeerPOJO> jsonbeer;
-
-            var current = Connectivity.NetworkAccess;
-            if (current == NetworkAccess.Internet)
-            {
-                   String url = "https://raw.githubusercontent.com/SpiritChrusher/FavoriteBeer/master/src/main/Allbeers.json";
-                   System.Net.WebClient client = new System.Net.WebClient();
-                   String json = client.DownloadString(url);
-
-                Application.Current.Properties["Everybeer"] = json;
-
-                jsonbeer = ReadBeer(json);
-            }
-            else
-            {
-                mainlabel.Text = "No internet, working with local file!";
-                jsonbeer = LocalJsonData();
-            }
-            return jsonbeer;
-        }
-
-        private List<BeerPOJO> ReadBeer(string all)
-        {
-            List<BeerPOJO> Beerslist; 
-
-            Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(all);
-
-            return Beerslist;
-        }
-
-        List<BeerPOJO> LocalJsonData()
-        {
-            List<BeerPOJO> Beerslist;
-
-            var jsonString = Application.Current.Properties["Everybeer"].ToString();
-
-            Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(jsonString);
-            return Beerslist;
-        }
             async private void ToListbeers_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Listbeers(beerlist));
           
         }
-
+        
         private void beername_Completed(object sender, EventArgs e)
         {
          
@@ -234,6 +203,12 @@ namespace BeerApp
             
         }
 
+        private async void ToRecommend_Clicked(object sender, EventArgs e)
+        {
+              await Navigation.PushAsync(new  Recommend(beerlist));
+            
+        }
+
         private async void Favorites_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Favorites(beerlist));
@@ -256,6 +231,8 @@ namespace BeerApp
           {
             IsDark = e.Value;
           }
+
+        
     }
 }
 

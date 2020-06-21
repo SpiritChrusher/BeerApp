@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace BeerApp
 {
     public partial class App : Application
@@ -18,11 +19,14 @@ namespace BeerApp
         {
             InitializeComponent();
             FilePath = filepath;
-            MainPage = new NavigationPage(new MainPage());
+               MainPage = new NavigationPage(new MainPage());
+            
+
         }
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
+            
         }
 
         protected override void OnSleep()

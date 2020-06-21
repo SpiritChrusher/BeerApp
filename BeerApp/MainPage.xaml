@@ -60,10 +60,14 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button x:Name="ToListbeers" Text="Beerlist" Grid.Row="3"
-                    Clicked="ToListbeers_Clicked" Margin="35, 10, 35, 25" HorizontalOptions="Start" WidthRequest="120"/>
+        <Button x:Name="ToListbeers" Text="Beerlist" Grid.Row="3"  WidthRequest="110"
+                    Clicked="ToListbeers_Clicked" Margin="30, 10, 35, 25" HorizontalOptions="Start"/>
+
+        <Button x:Name="ToRecommend" Text="Recommend" Clicked="ToRecommend_Clicked" Margin="30, 10, 30, 25" 
+                HorizontalOptions="Center" Grid.Row="3" WidthRequest="115"/>
+
         <Button x:Name="Favorites" Text="Favorites" Clicked="Favorites_Clicked"  
-                    Margin="35, 10, 35, 25" Grid.Row="3" HorizontalOptions="End" WidthRequest="120"/>
+                    Margin="30, 10, 30, 25" Grid.Row="3" HorizontalOptions="End" WidthRequest="110"/>
     </Grid>
     
 

@@ -9,36 +9,65 @@ namespace BeerApp.Backend
         Radler = 2,
         Lager,
         Hoplager,
-        Munchener,
+        Munchener_Hell,
+        Weissbier,
+        Búzasör,
+        Witbier,
+        Session_IPA,
         IPA = 10,
-        Session_IPA = 10,
-        Imperial_IPA = 8,
+        Imperial_IPA = 14,
         Imperial_Stout = 10,
         Russian_Imperial_Stout,
+
     }
 
     enum Tastes
     {
         kellemes,
         kicsit_keserű,
+        közepesen_keserű,
+        nagyon_keserű,
         könnyen_iható,
+        gyümölcsös,
+        tömény,
+        komplex,
+
 
     }
 
     class BeerTypes
     {
-        public int Typepoints(BeerPOJO beer)
+
+        public static ushort Typepoints(List<string> types)
         {
 
-            int point = 0;
+            ushort point = 0;
 
-            foreach (var item in beer.type)
+            foreach (var item in types)
             {
                 foreach (var item2 in Enum.GetValues(typeof(Types)))
                 {
                     if (item.ToLower() == item2.ToString().Replace('_',' ').ToLower())
                     {
-                        point += (int)item2;
+                        point += (ushort)item2;
+                    }
+                }
+            }
+            return point;
+        }
+
+        public static ushort Tastepoints(List<string> tastes)
+        {
+
+            ushort point = 0;
+
+            foreach (var item in tastes)
+            {
+                foreach (var item2 in Enum.GetValues(typeof(Tastes)))
+                {
+                    if (item.ToLower() == item2.ToString().Replace('_', ' ').ToLower())
+                    {
+                        point += (ushort)item2;
                     }
                 }
             }
@@ -48,9 +77,15 @@ namespace BeerApp.Backend
         public decimal Price_value( BeerPOJO currentbeer)
         {
             decimal value = 0;
+            if (currentbeer.price != 9999 || currentbeer.price != 0)
+            {
+                value = ((Typepoints(currentbeer.type) * currentbeer.quality) / currentbeer.price) * 100;
 
-
-
+            }
+            else
+            {
+                value = 0;
+            }
             return value;
         }
 
