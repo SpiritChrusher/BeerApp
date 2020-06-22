@@ -42,7 +42,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Save" WidthRequest="100" HeightRequest="40" Margin="15, 2, 15, 2" Clicked="Button_Clicked" Grid.Row="2"/>
+            
         </Grid>
     </Grid>
 </ContentPage>

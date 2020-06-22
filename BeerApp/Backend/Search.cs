@@ -25,7 +25,7 @@ namespace BeerApp.Backend
                          valuebeers.Add(item);
                      }
                  }*/
-              valuebeers = allbeer.Where(x => (x.price - beerprice < beerprice * 0.15)).OrderBy(x => x.name).ToList();
+              valuebeers = allbeer.Where(x => (Math.Abs(x.price - beerprice) <= beerprice * 0.14)).OrderBy(x => x.name).ToList();
             }
 
             else { return valuebeers;}

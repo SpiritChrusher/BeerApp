@@ -8,9 +8,12 @@
     <Application.Resources>
 
         <ResourceDictionary>
-            <Color x:Key="MainBackGround">White</Color>
-            <Color x:Key="NormalBackGround">Transparent</Color>
-            <Color x:Key="FontColor">Black</Color>
+            <Color x:Key="MainBackGround"></Color>
+            <Color x:Key="NormalBackGround"></Color>
+            <Color x:Key="FontColor"></Color>
+            <Color x:Key="Buttonbg"></Color>
+            <Color x:Key="Borderc"></Color>
+            <Color x:Key="ButtonText"></Color>
         </ResourceDictionary>
                
     </Application.Resources>

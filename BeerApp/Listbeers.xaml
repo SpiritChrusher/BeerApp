@@ -11,10 +11,15 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label Text="All Beers"  HorizontalTextAlignment="Center" FontSize="18" Grid.Row="0" TextColor="{DynamicResource FontColor}" />
+            <Label Text="All Beers"  HorizontalTextAlignment="Center" FontSize="18" 
+                   Grid.Row="0" TextColor="{DynamicResource FontColor}" />
+            
+            <Button Text="Save" WidthRequest="90" HeightRequest="40" Margin="15, 2, 15, 2" x:Name="Save"
+                    Clicked="Save_Clicked" Grid.Row="0" BackgroundColor="Transparent" HorizontalOptions="End" TextColor="{DynamicResource ButtonText}"/>
+            
             <ListView x:Name="MyListView" Grid.Row="1" HorizontalOptions="FillAndExpand" 
                       Footer="" HasUnevenRows="True">
                 <ListView.ItemTemplate>
@@ -30,9 +35,10 @@
                                 <Label Text="{Binding name}" HorizontalOptions="StartAndExpand" Grid.Row="0" TextColor="{DynamicResource FontColor}"
                                         FontAttributes="Bold"/>
                                 <Label Text= "{Binding Displaytype}"
-                                       HorizontalOptions="StartAndExpand" Grid.Row="1" TextColor="Orange"  FontAttributes="Bold"/>
+                                       HorizontalOptions="StartAndExpand" Grid.Row="1" TextColor="#FFFFFF"  
+                                       FontAttributes="Bold"/>
                                 <Label Text="{Binding Displayquality}" HorizontalOptions="StartAndExpand"
-                                       Grid.Row="2" TextColor="Aqua"  FontAttributes="Bold"/>
+                                       Grid.Row="2" TextColor="{DynamicResource FontColor}"  FontAttributes="Bold"/>
                                 <CheckBox x:Name="checker"  IsChecked="{Binding IsChecked , Mode=TwoWay}"
                                           HorizontalOptions="End" Grid.Row="0"/>
                                 <BoxView HeightRequest="2" Margin="0,10,10,0" BackgroundColor="Gray" Grid.Row="3" 

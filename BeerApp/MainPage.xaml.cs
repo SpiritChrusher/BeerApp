@@ -37,32 +37,54 @@ namespace BeerApp
 
                     if (IsDark)
                     {
-                        App.Current.Resources["MainBackGround"] = Color.Black;
-                        App.Current.Resources["FontColor"] = Color.White;
-                        App.Current.Resources["NormalBackGround"] = Color.White;
+                        App.Current.Resources["MainBackGround"] = "#EF000500";
+                        App.Current.Resources["FontColor"] = "#AFFFFFFF";
+                        App.Current.Resources["NormalBackGround"] = Color.Transparent;
+                        App.Current.Resources["Buttonbg"] = "#0FFFFFFF";
+                        App.Current.Resources["Borderc"] = "#AFFFFFFF";
+                        App.Current.Resources["ButtonText"] = "#AFFFFFFF";
 
                     }
                     else
                     {
-                        App.Current.Resources["MainBackGround"] = Color.White;
+                        App.Current.Resources["MainBackGround"] = Color.DarkSeaGreen;
                         App.Current.Resources["FontColor"] = Color.Black;
-                        App.Current.Resources["NormalBackGround"] = Color.Gray;
+                        App.Current.Resources["NormalBackGround"] = Color.Transparent;
+                        App.Current.Resources["Buttonbg"] = Color.Honeydew;
+                        App.Current.Resources["Borderc"] = Color.Black;
+                        App.Current.Resources["ButtonText"] = Color.Black;
                     }
-                    Preferences.Set("darkmode", IsDark);
+
                 }
             }
         }
         public MainPage()
-        {
-            InitializeComponent();
+        {         
             Construct();
-          // await Task.Run(() => Construct()).Wait();
-            IsDark = Preferences.Get("darkmode", true);
+            InitializeComponent();
+            // await Task.Run(() => Construct()).Wait();
+            IsDark = Preferences.Get("darkmode", false);
             switcher.IsToggled = IsDark;
-          
+            if (IsDark)
+            {
+                App.Current.Resources["MainBackGround"] = "#EF000500";
+                App.Current.Resources["FontColor"] = "#AFFFFFFF";
+                App.Current.Resources["NormalBackGround"] = Color.Transparent;
+                App.Current.Resources["Buttonbg"] = "#0FFFFFFF";
+                App.Current.Resources["Borderc"] = "#AFFFFFFF";
+                App.Current.Resources["ButtonText"] = "#AFFFFFFF";
+
+            }
+            else
+            {
+                App.Current.Resources["MainBackGround"] = Color.DarkSeaGreen;
+                App.Current.Resources["FontColor"] = Color.Black;
+                App.Current.Resources["NormalBackGround"] = Color.Transparent;
+                App.Current.Resources["Buttonbg"] = Color.Honeydew;
+                App.Current.Resources["Borderc"] = Color.Black;
+                App.Current.Resources["ButtonText"] = Color.Black;
+            }
         }
-
-
         private async Task Construct()
         {
             var current = Connectivity.NetworkAccess;
@@ -98,10 +120,9 @@ namespace BeerApp
             }
         }
 
-            async private void ToListbeers_Clicked(object sender, EventArgs e)
+        async private void ToListbeers_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Listbeers(beerlist));
-          
         }
         
         private void beername_Completed(object sender, EventArgs e)
@@ -113,7 +134,7 @@ namespace BeerApp
                 {
                   string newname = beername.Text.Remove(beername.Text.Length-1);
 
-                    switch (seachby.SelectedIndex)
+                    switch (searchby.SelectedIndex)
                     {
                         case 0:
                             Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
@@ -164,7 +185,7 @@ namespace BeerApp
                 }
                 else
                 {
-                    switch (seachby.SelectedIndex)
+                    switch (searchby.SelectedIndex)
                     {
                         case 0:
                             Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
@@ -205,7 +226,7 @@ namespace BeerApp
 
         private async void ToRecommend_Clicked(object sender, EventArgs e)
         {
-              await Navigation.PushAsync(new  Recommend(beerlist));
+              await Navigation.PushAsync(new Recommend(beerlist));
             
         }
 
@@ -230,7 +251,8 @@ namespace BeerApp
           private void switcher_Toggled(object sender, ToggledEventArgs e)
           {
             IsDark = e.Value;
-          }
+            Preferences.Set("darkmode", IsDark);
+        }
 
         
     }

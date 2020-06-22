@@ -12,19 +12,21 @@
     
         <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="mainlabel" TextColor="Blue" Text="Kristof's BeerApp" Grid.Row="0" HorizontalOptions="Center" FontSize="17"/>
+        <Label x:Name="mainlabel" TextColor="#3D513D" Text="Kristof's BeerApp" Grid.Row="0" 
+               HorizontalOptions="Center" FontSize="Large"/>
         <Switch Grid.Row="0" HorizontalOptions="End" Toggled="switcher_Toggled" x:Name="switcher"/>
             
-        <Picker x:Name="seachby"
-        Title="select"
-        TitleColor="Brown" HorizontalOptions="Start"
-                Grid.Row="1" WidthRequest="100">
+        <Picker x:Name="searchby"
+        Title="Search by" 
+        TitleColor="{DynamicResource ButtonText}" HorizontalOptions="Center"
+                Grid.Row="1" WidthRequest="150" FontSize="Medium">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                     <x:String>név szerint</x:String>
@@ -36,23 +38,24 @@
                 </Picker.ItemsSource>
             </Picker>
         <Entry x:Name="beername" Completed="beername_Completed"
-               IsPassword="False" Placeholder="enter beername here!" 
-               HorizontalTextAlignment="Center" HorizontalOptions="EndAndExpand" Margin="10, 20, 10, 10" 
-               Grid.Row="1"  WidthRequest="260" BackgroundColor="{DynamicResource NormalBackGround}"/>
-        <ListView x:Name="MyListView" Grid.Row="2" HorizontalOptions="FillAndExpand" 
+               IsPassword="False" Placeholder="Enter keyword here!" TextColor="{DynamicResource ButtonText}"
+               HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Margin="10, 20, 10, 10" 
+               Grid.Row="2"  WidthRequest="260" BackgroundColor="{DynamicResource NormalBackGround}"/>
+        
+            <ListView x:Name="MyListView" Grid.Row="3" HorizontalOptions="FillAndExpand" 
                       Footer="" HasUnevenRows="True" ItemTapped="MyListView_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid HorizontalOptions="FillAndExpand" Padding="10">
+                        <Grid HorizontalOptions="FillAndExpand" Padding="2" BackgroundColor="Transparent">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <Label Text="{Binding name}"
-                                   FontSize="Medium" Grid.Row="0" TextColor="{DynamicResource FontColor}"/>
+                                   FontSize="Medium" Grid.Row="0" TextColor="{DynamicResource FontColor}" BackgroundColor="Transparent"/>
 
-                            <Label Text="{Binding DisplayAll}" IsVisible="{Binding IsVisible}" Grid.Row="1" FontSize="17" />
+                            <Label Text="{Binding DisplayAll}" IsVisible="{Binding IsVisible}" Grid.Row="1" FontSize="17" BackgroundColor="Beige" />
                         </Grid>
                     </ViewCell>
 
@@ -60,14 +63,17 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button x:Name="ToListbeers" Text="Beerlist" Grid.Row="3"  WidthRequest="110"
-                    Clicked="ToListbeers_Clicked" Margin="30, 10, 35, 25" HorizontalOptions="Start"/>
+        <Button x:Name="ToListbeers" Text="Beerlist" Grid.Row="4"  WidthRequest="100"
+                    Clicked="ToListbeers_Clicked" Margin="30, 10, 35, 25" BorderColor="{DynamicResource Borderc}" TextColor="{DynamicResource ButtonText}"
+                HorizontalOptions="Start" BackgroundColor="{DynamicResource Buttonbg}" BorderWidth="2"/>
 
         <Button x:Name="ToRecommend" Text="Recommend" Clicked="ToRecommend_Clicked" Margin="30, 10, 30, 25" 
-                HorizontalOptions="Center" Grid.Row="3" WidthRequest="115"/>
+                HorizontalOptions="Center" Grid.Row="4" WidthRequest="115" TextColor="{DynamicResource ButtonText}" 
+                BackgroundColor="{DynamicResource Buttonbg}" BorderWidth="2" BorderColor="{DynamicResource Borderc}"/>
 
         <Button x:Name="Favorites" Text="Favorites" Clicked="Favorites_Clicked"  
-                    Margin="30, 10, 30, 25" Grid.Row="3" HorizontalOptions="End" WidthRequest="110"/>
+                    Margin="30, 10, 30, 25" Grid.Row="4" HorizontalOptions="End" 
+                WidthRequest="100" TextColor="{DynamicResource ButtonText}" BackgroundColor="{DynamicResource Buttonbg}" BorderColor="{DynamicResource Borderc}" BorderWidth="2"/>
     </Grid>
     
 

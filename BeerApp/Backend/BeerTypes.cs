@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BeerApp.Backend
@@ -7,26 +8,34 @@ namespace BeerApp.Backend
     enum Types
     {
         Radler = 2,
-        Lager,
+        Lager = 4,
+        Ale =4,
         Hoplager,
-        Munchener_Hell,
-        Weissbier,
-        Búzasör,
-        Witbier,
+        Pils,
+        Munchener_Hell = 6,
+        Búzasör = 6,
+        Weissbier = 6,
         Session_IPA,
+        Witbier,
+        Porter,
+        Stout,
+        American_Pale_Ale = 10,
         IPA = 10,
         Imperial_IPA = 14,
         Imperial_Stout = 10,
+        Tripel = 14,
         Russian_Imperial_Stout,
+        Quadrupel,
 
     }
 
     enum Tastes
     {
-        kellemes,
+        
         kicsit_keserű,
         közepesen_keserű,
         nagyon_keserű,
+        kellemes,
         könnyen_iható,
         gyümölcsös,
         tömény,
@@ -45,9 +54,10 @@ namespace BeerApp.Backend
 
             foreach (var item in types)
             {
-                foreach (var item2 in Enum.GetValues(typeof(Types)))
+                foreach (int item2 in Enum.GetValues(typeof(Types)))
                 {
-                    if (item.ToLower() == item2.ToString().Replace('_',' ').ToLower())
+                   
+                    if (item.ToLower() == ((Types)item2).ToString().Replace('_',' ').ToLower())
                     {
                         point += (ushort)item2;
                     }
@@ -60,12 +70,13 @@ namespace BeerApp.Backend
         {
 
             ushort point = 0;
+       
 
             foreach (var item in tastes)
             {
-                foreach (var item2 in Enum.GetValues(typeof(Tastes)))
+                foreach (int item2 in Enum.GetValues(typeof(Tastes)))
                 {
-                    if (item.ToLower() == item2.ToString().Replace('_', ' ').ToLower())
+                    if (item.ToLower() == ((Tastes)item2).ToString().Replace('_', ' ').ToLower())
                     {
                         point += (ushort)item2;
                     }

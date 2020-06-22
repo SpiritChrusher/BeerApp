@@ -11,25 +11,27 @@ namespace BeerApp.Backend
         {
             List<BeerPOJO> thebeers = new List<BeerPOJO>();
 
-            string[] allbeers = entrybeers.Split(',');
+            string[] enterbeers = entrybeers.Split(',');
 
-            foreach (var name in allbeers)
+            foreach (var name in enterbeers)
             {
+                string newname;
                 if (name[0] == ' ')
                 {
-                    name.Remove(0, 1);
+                    newname = name.Remove(0, 1);
                 }
+                else { newname = name; }
+
                 foreach (var beer in beers)
-                {
-                    if (name == beer.name)
+                {                   
+
+                    if (newname.ToLower() == beer.name.ToLower())
                     {
-                        beer.Value = (BeerTypes.Typepoints(beer.taste) + BeerTypes.Tastepoints(beer.taste)) * (beer.quality);
+                        beer.Value = (BeerTypes.Typepoints(beer.type) + BeerTypes.Tastepoints(beer.taste)) * (beer.quality);
                         thebeers.Add(beer);
                         break;
                     }
                 }
-                //még cikluson belül minden sörnek összértéket számítani valami BeerType-os metódussal és listához adni
-                //aztán pedig linq-val érték szerint növekvő sorrendbe kell rakni és azt visszaadni.
             }
 
             // List<BeerPOJO> recommended = thebeers.OrderBy(x => x.Value).ThenBy(y => y.name).ToList();

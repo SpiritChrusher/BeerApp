@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="BeerApp.Recommend">
+             x:Class="BeerApp.Recommend" BackgroundColor="{DynamicResource MainBackGround}">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -12,16 +12,17 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"  Grid.Row="0"/>
+            <Label Text="Írj be sörneveket, és a program sorba rendező azokat"
+                VerticalOptions="CenterAndExpand" TextColor="{DynamicResource FontColor}"
+                HorizontalOptions="CenterAndExpand"  Grid.Row="0" FontSize="16"/>
             <Entry x:Name="beernames" Completed="beernames_Completed"
-               IsPassword="False" Placeholder="Enter beers here!" 
+               IsPassword="False" Placeholder="Enter beers here!" TextColor="{DynamicResource FontColor}"
                HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" 
                    Margin="10, 20, 10, 10" Grid.Row="1"  WidthRequest="260" 
                    BackgroundColor="{DynamicResource NormalBackGround}"/>
             <Label Text="A lista itt lesz"  VerticalOptions="CenterAndExpand"
-            HorizontalOptions="CenterAndExpand" Grid.Row="2" x:Name="recommendedlabel"/>
+            HorizontalOptions="CenterAndExpand" Grid.Row="2" x:Name="recommendedlabel"
+                   TextColor="{DynamicResource FontColor}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

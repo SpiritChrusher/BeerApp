@@ -24,11 +24,11 @@ namespace BeerApp
         {
             List<BeerPOJO> completedlist = Recommending.RecommendBeers(beernames.Text, beerlist);
 
-            recommendedlabel.Text = "Here is the list: ";
+            recommendedlabel.Text = "Here is the list: \n\n";
 
             foreach (var item in completedlist)
             {
-                recommendedlabel.Text += $"\n {item}";
+                recommendedlabel.Text += $"\n {item.name}";
             }
 
         }

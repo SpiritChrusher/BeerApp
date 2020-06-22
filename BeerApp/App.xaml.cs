@@ -19,12 +19,10 @@ namespace BeerApp
         {
             InitializeComponent();
             FilePath = filepath;
-               MainPage = new NavigationPage(new MainPage());
-            
-
+               MainPage = new NavigationPage(new MainPage());          
         }
 
-        protected async override void OnStart()
+        protected override void OnStart()
         {
             
         }
