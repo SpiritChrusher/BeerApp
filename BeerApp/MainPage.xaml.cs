@@ -154,23 +154,6 @@ namespace BeerApp
                         default:
                             Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
                             break;
-                            /*   case 0:
-                                   //Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.name.Contains(beername.Text)).OrderBy(x => x.name));
-                                   Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
-                                   break;
-                               case 1:
-                                   Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.type[x.type.Count - 1].ToLower() == beername.Text.ToLower()).OrderBy(y => y.name));
-                                   break;
-                               case 2:
-                                   Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.origin.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
-                                   break;
-                               case 3:
-                                   Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.manufacturer.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
-                                   break;
-
-                               default:
-                                   Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
-                                   break;*/
                     }
                     if (Expandinglist.Count > 0)
                     {
