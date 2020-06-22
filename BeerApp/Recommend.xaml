@@ -12,17 +12,17 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label Text="Írj be sörneveket, és a program sorba rendező azokat"
+            <Label Text="Írj be sörneveket, és a program sorba rendező azokat! BETA  verzió"
                 VerticalOptions="CenterAndExpand" TextColor="{DynamicResource FontColor}"
-                HorizontalOptions="CenterAndExpand"  Grid.Row="0" FontSize="16"/>
+                HorizontalOptions="CenterAndExpand"  Grid.Row="0" FontSize="16" Margin="10,10,10,0"/>
             <Entry x:Name="beernames" Completed="beernames_Completed"
-               IsPassword="False" Placeholder="Enter beers here!" TextColor="{DynamicResource FontColor}"
+               IsPassword="False" Placeholder="Enter beers here!" PlaceholderColor="{DynamicResource FontColor}" TextColor="{DynamicResource FontColor}"
                HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" 
                    Margin="10, 20, 10, 10" Grid.Row="1"  WidthRequest="260" 
                    BackgroundColor="{DynamicResource NormalBackGround}"/>
             <Label Text="A lista itt lesz"  VerticalOptions="CenterAndExpand"
             HorizontalOptions="CenterAndExpand" Grid.Row="2" x:Name="recommendedlabel"
-                   TextColor="{DynamicResource FontColor}"/>
+                   TextColor="{DynamicResource FontColor}" FontSize="20"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

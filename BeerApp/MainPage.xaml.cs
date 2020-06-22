@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json;
 using Xamarin.Forms;
 using System;
 using System.ComponentModel;
@@ -9,7 +7,6 @@ using BeerApp.Backend;
 using Xamarin.Essentials;
 using System.Collections.ObjectModel;
 using SQLite;
-using System.Globalization;
 using System.Threading.Tasks;
 
 namespace BeerApp
@@ -120,7 +117,7 @@ namespace BeerApp
             }
         }
 
-        async private void ToListbeers_Clicked(object sender, EventArgs e)
+        private async void ToListbeers_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Listbeers(beerlist));
         }
@@ -209,8 +206,7 @@ namespace BeerApp
 
         private async void ToRecommend_Clicked(object sender, EventArgs e)
         {
-              await Navigation.PushAsync(new Recommend(beerlist));
-            
+              await Navigation.PushAsync(new Recommend(beerlist));           
         }
 
         private async void Favorites_Clicked(object sender, EventArgs e)

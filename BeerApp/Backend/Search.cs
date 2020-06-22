@@ -18,13 +18,6 @@ namespace BeerApp.Backend
             
             if (success)
             {
-                /* foreach (var item in allbeer)
-                 {
-                     if (Math.Abs(beerprice - item.price) < beerprice*0.15)
-                     {
-                         valuebeers.Add(item);
-                     }
-                 }*/
               valuebeers = allbeer.Where(x => (Math.Abs(x.price - beerprice) <= beerprice * 0.14)).OrderBy(x => x.name).ToList();
             }
 

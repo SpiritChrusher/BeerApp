@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BeerApp.Backend
 {
@@ -24,7 +23,6 @@ namespace BeerApp.Backend
 
                 foreach (var beer in beers)
                 {                   
-
                     if (newname.ToLower() == beer.name.ToLower())
                     {
                         beer.Value = (BeerTypes.Typepoints(beer.type) + BeerTypes.Tastepoints(beer.taste)) * (beer.quality);
@@ -33,9 +31,6 @@ namespace BeerApp.Backend
                     }
                 }
             }
-
-            // List<BeerPOJO> recommended = thebeers.OrderBy(x => x.Value).ThenBy(y => y.name).ToList();
-
             return thebeers.OrderBy(x => x.Value).ThenBy(y => y.name).ToList();
         }
     }

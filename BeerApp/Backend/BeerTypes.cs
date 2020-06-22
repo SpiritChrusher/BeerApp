@@ -30,18 +30,15 @@ namespace BeerApp.Backend
     }
 
     enum Tastes
-    {
-        
+    {      
         kicsit_keserű,
         közepesen_keserű,
         nagyon_keserű,
-        kellemes,
         könnyen_iható,
+        kellemes,
         gyümölcsös,
         tömény,
         komplex,
-
-
     }
 
     class BeerTypes
