@@ -2,11 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:custom="clr-namespace:BeerApp"
              mc:Ignorable="d"
              x:Class="BeerApp.Favorites"
              NavigationPage.HasBackButton="False"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource MainBackGround}">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -19,29 +20,30 @@
             <ListView x:Name="MyListView" Grid.Row="1" HorizontalOptions="FillAndExpand" Footer="" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid HorizontalOptions="FillAndExpand" Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                            <Label Text="{Binding name}" HorizontalOptions="StartAndExpand" Grid.Row="0" 
-                                       TextColor="Blue"  FontAttributes="Bold"/>
-                            <Label Text= "{Binding Displaytype}" 
+                        <custom:CustomViewCell SelectedItemBackgroundColor="{DynamicResource MainBackGround}">
+                            <ViewCell.View>
+                                <Grid HorizontalOptions="FillAndExpand" Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding name}" HorizontalOptions="StartAndExpand" Grid.Row="0" 
+                                       TextColor="{DynamicResource FontColor}"  FontAttributes="Bold"/>
+                                    <Label Text= "{Binding Displaytype}" 
                                        HorizontalOptions="StartAndExpand" Grid.Row="1" TextColor="Orange"  FontAttributes="Bold"/>
-                            <Label Text="{Binding Displayquality}" HorizontalOptions="StartAndExpand"
+                                    <Label Text="{Binding Displayquality}" HorizontalOptions="StartAndExpand"
                                        Grid.Row="2" TextColor="Gray"  FontAttributes="Bold"/>
-                                <BoxView HeightRequest="2" Margin="0,10,10,0" BackgroundColor="Gray" Grid.Row="3" 
+                                    <BoxView HeightRequest="2" Margin="0,10,10,0" BackgroundColor="Gray" Grid.Row="3" 
                                          HorizontalOptions="FillAndExpand" />
-                            </Grid>
-                        </ViewCell>
-
+                                </Grid>
+                            </ViewCell.View>
+                        </custom:CustomViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Save" WidthRequest="100" HeightRequest="40" Margin="15, 2, 15, 2" Clicked="Button_Clicked" Grid.Row="2"/>
+            
         </Grid>
     </Grid>
 </ContentPage>

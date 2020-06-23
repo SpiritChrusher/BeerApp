@@ -1,5 +1,6 @@
 ﻿using BeerApp.Backend;
 using Newtonsoft.Json;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,8 +29,24 @@ namespace BeerApp
             list = lista;
             _rootobj = new ObservableCollection<BeerPOJO>(list.OrderBy(x => x.name).ToList());
             MyListView.ItemsSource = _rootobj;
-
         }
 
+        private void Save_Clicked(object sender, EventArgs e)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            {
+                conn.DropTable<BeerSQL>();
+                conn.CreateTable<BeerSQL>();
+
+                foreach (var item in list)
+                {
+                    if (item.IsChecked)
+                    {
+                        BeerSQL tosql = new BeerSQL(item.name);
+                        conn.Insert(tosql);
+                    }
+                }
+            }
+        }
     }
 }

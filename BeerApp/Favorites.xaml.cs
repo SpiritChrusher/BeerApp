@@ -24,7 +24,7 @@ namespace BeerApp
             MyListView.ItemsSource = Favoriteslist;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+       /* private void Button_Clicked(object sender, EventArgs e)
         {
            using(SQLiteConnection conn = new SQLiteConnection(App.FilePath))
             {
@@ -37,6 +37,6 @@ namespace BeerApp
                     conn.Insert(tosql);
                 }
             }
-        }
+        }*/
     }
 }

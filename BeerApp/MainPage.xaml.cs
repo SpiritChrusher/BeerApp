@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using Newtonsoft.Json;
 using Xamarin.Forms;
 using System;
 using System.ComponentModel;
@@ -10,92 +7,138 @@ using BeerApp.Backend;
 using Xamarin.Essentials;
 using System.Collections.ObjectModel;
 using SQLite;
+using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
 
 namespace BeerApp
 {
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        private List<BeerPOJO> beerlist;
 
+        private List<BeerPOJO> beerlist;
         private ObservableCollection<BeerPOJO> Expandinglist {get; set;}
 
-        public MainPage()
+
+        private bool isDark;
+        public bool IsDark
         {
-            InitializeComponent();
-            beerlist = GetJson();
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            get
             {
-                conn.CreateTable<BeerSQL>();
-                var beers = conn.Table<BeerSQL>().ToList();
-                if(beers.Count > 0)
+                return isDark;
+            }
+            set
+            {
+                if (isDark != value)
                 {
-                    foreach (var item in beerlist)
+                    isDark = value;
+
+                    if (IsDark)
                     {
-                        foreach (var item2 in beers)
-                        {
-                            if(item.name == item2.Name)
-                            {
-                                item.IsChecked = true;
-                            }
-                        }
+                        App.Current.Resources["MainBackGround"] = "#EF000500";
+                        App.Current.Resources["FontColor"] = "#AFFFFFFF";
+                        App.Current.Resources["NormalBackGround"] = Color.Transparent;
+                        App.Current.Resources["Buttonbg"] = "#0FFFFFFF";
+                        App.Current.Resources["Borderc"] = "#AFFFFFFF";
+                        App.Current.Resources["ButtonText"] = "#AFFFFFFF";
+
                     }
-                }                
+                    else
+                    {
+                        App.Current.Resources["MainBackGround"] = Color.DarkSeaGreen;
+                        App.Current.Resources["FontColor"] = Color.Black;
+                        App.Current.Resources["NormalBackGround"] = Color.Transparent;
+                        App.Current.Resources["Buttonbg"] = Color.Honeydew;
+                        App.Current.Resources["Borderc"] = Color.Black;
+                        App.Current.Resources["ButtonText"] = Color.Black;
+                    }
+
+                }
             }
         }
-
-        public MainPage(List<BeerPOJO> list)
+        public MainPage()
         {
-           beerlist = list;
-        }
 
-        private List<BeerPOJO> GetJson()
-        {
-            List<BeerPOJO> jsonbeer;
+            InitializeComponent();
 
-            var current = Connectivity.NetworkAccess;
-            if (current == NetworkAccess.Internet)
+            Construct();
+
+            IsDark = Preferences.Get("darkmode", false);
+            switcher.IsToggled = IsDark;
+            if (IsDark)
             {
-                   String url = "https://raw.githubusercontent.com/SpiritChrusher/FavoriteBeer/master/src/main/Allbeers.json";
-                   System.Net.WebClient client = new System.Net.WebClient();
-                   String json = client.DownloadString(url);
+                App.Current.Resources["MainBackGround"] = "#EF000500";
+                App.Current.Resources["FontColor"] = "#AFFFFFFF";
+                App.Current.Resources["NormalBackGround"] = Color.Transparent;
+                App.Current.Resources["Buttonbg"] = "#0FFFFFFF";
+                App.Current.Resources["Borderc"] = "#AFFFFFFF";
+                App.Current.Resources["ButtonText"] = "#AFFFFFFF";
 
-                Application.Current.Properties["Everybeer"] = json;
-
-                jsonbeer = ReadBeer(json);
             }
             else
             {
-                mainlabel.Text = "No internet, only local file is working!";
-                jsonbeer = LocalJsonData();
+                App.Current.Resources["MainBackGround"] = Color.DarkSeaGreen;
+                App.Current.Resources["FontColor"] = Color.Black;
+                App.Current.Resources["NormalBackGround"] = Color.Transparent;
+                App.Current.Resources["Buttonbg"] = Color.Honeydew;
+                App.Current.Resources["Borderc"] = Color.Black;
+                App.Current.Resources["ButtonText"] = Color.Black;
             }
-            return jsonbeer;
         }
+          private void Construct()
+          {
+              var current = Connectivity.NetworkAccess;
 
-        private List<BeerPOJO> ReadBeer(string all)
-        {
-            List<BeerPOJO> Beerslist; 
+              if (current == NetworkAccess.Internet)
+              {
+                  beerlist = Readfile.GetJson();
 
-            Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(all);
+                  mainlabel.Text = "lokális siker!";
+                  Application.Current.Properties["Everybeer"] = beerlist;
+                  WorkingSQL();
+                  mainlabel.Text = "online siker3!";
+              }
 
-            return Beerslist;
-        }
+              else
+              {
+                  var jsonString = Application.Current.Properties["Everybeer"].ToString();
 
-        List<BeerPOJO> LocalJsonData()
-        {
-            List<BeerPOJO> Beerslist;
+                  beerlist = Readfile.LocalJsonData(jsonString);
 
-            var jsonString = Application.Current.Properties["Everybeer"].ToString();
+                  WorkingSQL();
+              }
 
-            Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(jsonString);
-            return Beerslist;
-        }
-            async private void ToListbeers_Clicked(object sender, EventArgs e)
+          }
+
+
+          private void WorkingSQL()
+          { 
+              using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+              {
+                  conn.CreateTable<BeerSQL>();
+                  var beers = conn.Table<BeerSQL>().ToList();
+                  if (beers.Count > 0)
+                  {
+                      foreach (var item in beerlist)
+                      {
+                          foreach (var item2 in beers)
+                          {
+                              if (item.name == item2.Name)
+                              {
+                                  item.IsChecked = true;
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+        
+        private async void ToListbeers_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Listbeers(beerlist));
-          
         }
-
+        
         private void beername_Completed(object sender, EventArgs e)
         {
          
@@ -105,15 +148,70 @@ namespace BeerApp
                 {
                   string newname = beername.Text.Remove(beername.Text.Length-1);
 
-                    Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(x => x.name).ToList());
-                    MyListView.ItemsSource = Expandinglist;
-                  
+                    switch (searchby.SelectedIndex)
+                    {
+                        case 0:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
+                            break;
+                        case 1:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.type[x.type.Count - 1].ToLower() == beername.Text.ToLower()).OrderBy(y => y.name));
+                            break;
+                        case 2:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.origin.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
+                            break;
+                        case 3:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.manufacturer.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
+                            break;
+                        case 4:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.PriceSearch(beerlist, beername.Text));
+                            break;
+                        default:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
+                            break;
+                    }
+                    if (Expandinglist.Count > 0)
+                    {
+                        MyListView.ItemsSource = Expandinglist;
+                    }
+                    else
+                    {
+                        MyListView.ItemsSource = null;
+                        mainlabel.Text = "No beer found, try something else";
+                    }
+                        
                 }
                 else
                 {
-                    Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(x => x.name).ToList());
-                    MyListView.ItemsSource = Expandinglist;
-                   
+                    switch (searchby.SelectedIndex)
+                    {
+                        case 0:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
+                            break;
+                        case 1:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.type[x.type.Count - 1].ToLower() == beername.Text.ToLower()).OrderBy(y => y.name));
+                            break;
+                        case 2:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.origin.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
+                           break;
+                        case 3:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.manufacturer.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
+                            break;
+                        case 4:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.PriceSearch(beerlist, beername.Text));
+                            break;
+                        default:
+                            Expandinglist = new ObservableCollection<BeerPOJO>(Search.BeerListSearch(beerlist, beername.Text).OrderBy(y => y.name));
+                            break;
+                    }
+                    if (Expandinglist.Count > 0)
+                    {
+                        MyListView.ItemsSource = Expandinglist;
+                    }
+                    else
+                    {
+                        MyListView.ItemsSource = null;
+                        mainlabel.Text = "No beer found, try something else";
+                    }
                 }
             }
             else
@@ -121,6 +219,11 @@ namespace BeerApp
                 mainlabel.Text = "No enough characters";
             }
             
+        }
+
+        private async void ToRecommend_Clicked(object sender, EventArgs e)
+        {
+              await Navigation.PushAsync(new Recommend(beerlist));           
         }
 
         private async void Favorites_Clicked(object sender, EventArgs e)
@@ -139,6 +242,15 @@ namespace BeerApp
                 Expandinglist[e.ItemIndex].IsVisible = false;
             }
         }
+
+
+          private void switcher_Toggled(object sender, ToggledEventArgs e)
+          {
+            IsDark = e.Value;
+            Preferences.Set("darkmode", IsDark);
+        }
+
+        
     }
 }
 
