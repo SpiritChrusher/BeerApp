@@ -74,7 +74,6 @@ namespace BeerApp
                 App.Current.Resources["Buttonbg"] = "#0FFFFFFF";
                 App.Current.Resources["Borderc"] = "#AFFFFFFF";
                 App.Current.Resources["ButtonText"] = "#AFFFFFFF";
-
             }
             else
             {
