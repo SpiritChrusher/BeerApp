@@ -10,6 +10,7 @@ using SQLite;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
+using Mobeer;
 
 namespace BeerApp
 {
@@ -245,7 +246,11 @@ namespace BeerApp
             Preferences.Set("darkmode", IsDark);
         }
 
-
+        private async void ToBeerRecommend_Clicked(object sender, EventArgs e)
+        {
+            BeerPOJO.ChangeVisible(beerlist);
+            await Navigation.PushAsync(new BeerRecommendPage(beerlist));
+        }
     }
 }
 

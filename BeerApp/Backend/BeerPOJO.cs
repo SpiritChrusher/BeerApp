@@ -70,6 +70,14 @@ namespace BeerApp
             packformat = apackformat;
             IsVisible = false;       
         }
+
+        public BeerPOJO(string name, List<string> taste, bool isVisible)
+        {
+            this.name = name;
+            this.taste = taste;
+            IsVisible = isVisible;
+        }
+
         public string Displayquality => $"Quality: {quality}";
 
         

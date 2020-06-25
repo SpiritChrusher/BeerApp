@@ -17,7 +17,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="90"/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
 
         <Label x:Name="mainlabel" TextColor="#3D513D" Text="The MoBeer App" Grid.Row="0" 
@@ -64,18 +64,24 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
-        <Button x:Name="ToListbeers" Text="Beerlist" Grid.Row="4"  WidthRequest="100"
-                    Clicked="ToListbeers_Clicked" Margin="30, 10, 35, 25" BorderColor="{DynamicResource Borderc}" TextColor="{DynamicResource ButtonText}"
+        
+        <Button x:Name="ToListbeers" Text="Beerlist" Grid.Row="4"  WidthRequest="87" Grid.Column="0"
+                    Clicked="ToListbeers_Clicked" Margin="0, 10, 0, 0" BorderColor="{DynamicResource Borderc}" TextColor="{DynamicResource ButtonText}"
                 HorizontalOptions="Start" BackgroundColor="{DynamicResource Buttonbg}" BorderWidth="2"/>
 
-        <Button x:Name="ToRecommend" Text="Recommend" Clicked="ToRecommend_Clicked" Margin="30, 10, 30, 25" 
-                HorizontalOptions="Center" Grid.Row="4" WidthRequest="115" TextColor="{DynamicResource ButtonText}" 
+        
+        <Button x:Name="ToBeerRecommend" Text="Recommending" Clicked="ToBeerRecommend_Clicked" Margin="0, 10, 80, 0" 
+                HorizontalOptions="Center" WidthRequest="134" TextColor="{DynamicResource ButtonText}" Grid.Row="4"
                 BackgroundColor="{DynamicResource Buttonbg}" BorderWidth="2" BorderColor="{DynamicResource Borderc}"/>
-
+        
         <Button x:Name="Favorites" Text="Favorites" Clicked="Favorites_Clicked"  
-                    Margin="30, 10, 30, 25" Grid.Row="4" HorizontalOptions="End" 
-                WidthRequest="100" TextColor="{DynamicResource ButtonText}" BackgroundColor="{DynamicResource Buttonbg}" BorderColor="{DynamicResource Borderc}" BorderWidth="2"/>
+                    Margin="0, 10, 70, 0" Grid.Row="4" HorizontalOptions="End" 
+                WidthRequest="98" TextColor="{DynamicResource ButtonText}" 
+                BackgroundColor="{DynamicResource Buttonbg}" BorderColor="{DynamicResource Borderc}" BorderWidth="2"/>
+
+        <Button x:Name="ToRecommend" Text="Order" Clicked="ToRecommend_Clicked" Margin="0, 10, 0, 0" 
+                HorizontalOptions="End" Grid.Row="4" WidthRequest="69" TextColor="{DynamicResource ButtonText}" 
+                BackgroundColor="{DynamicResource Buttonbg}" BorderWidth="2" BorderColor="{DynamicResource Borderc}"/>
     </Grid>
     
 

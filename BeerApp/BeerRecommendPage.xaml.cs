@@ -17,12 +17,12 @@ namespace Mobeer
     {
         
         private List<BeerPOJO> list;
-
         public BeerRecommendPage(List<BeerPOJO> lista)
         {
             list = lista;
+            Dictionary<string, bool> dict = list.ToDictionary(x => x.taste.ToString(), x => x.IsVisible);
             
-            MyListView.ItemsSource = list;
+            MyListView.ItemsSource = dict;
             InitializeComponent();
         }
 
