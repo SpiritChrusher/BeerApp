@@ -15,15 +15,16 @@ namespace Mobeer
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BeerRecommendPage : ContentPage
     {
-        
+        private ObservableCollection<BeerPOJO> obslist { get; set; }
         private List<BeerPOJO> list;
         public BeerRecommendPage(List<BeerPOJO> lista)
         {
             list = lista;
-            Dictionary<string, bool> dict = list.ToDictionary(x => x.taste.ToString(), x => x.IsVisible);
-            
-            MyListView.ItemsSource = dict;
             InitializeComponent();
+            //  Dictionary<string, bool> dict = list.ToDictionary(x => x.taste.ToString(), x => x.IsVisible);
+            obslist = new ObservableCollection<BeerPOJO>(list.Select(x => new BeerPOJO { taste = x.taste, IsVisible = x.IsVisible }));
+            MyListView.ItemsSource = obslist;
+
         }
 
         private void MyListView_ItemTapped(object sender, ItemTappedEventArgs e)
