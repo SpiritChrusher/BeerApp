@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace BeerApp
 {
@@ -116,6 +117,17 @@ namespace BeerApp
           }
 
         public string DisplayImportant => $"{alcohol}\n{Displayquality}";
+
+        public static void ChangeVisible(List<BeerPOJO> list)
+        {
+            foreach (var item in list)
+            {
+                if (item.IsVisible == true)
+                {
+                    item.IsVisible = false;
+                }
+            } 
+        }
        
      }
 

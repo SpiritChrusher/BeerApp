@@ -22,7 +22,7 @@
 
         <Label x:Name="mainlabel" TextColor="#3D513D" Text="The MoBeer App" Grid.Row="0" 
                HorizontalOptions="Center" FontSize="Large"/>
-        <Switch Grid.Row="0" HorizontalOptions="End" Toggled="switcher_Toggled" x:Name="switcher"/>
+        <Switch Grid.Row="0" HorizontalOptions="End" Toggled="switcher_Toggled" x:Name="switcher" ThumbColor="Wheat"/>
             
         <Picker x:Name="searchby"
         Title="Search by" 
@@ -55,9 +55,9 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Label Text="{Binding name}"
-                                   FontSize="Medium" Grid.Row="0" TextColor="{DynamicResource FontColor}" BackgroundColor="Transparent"/>
+                                   FontSize="Medium" Grid.Row="0" TextColor="{DynamicResource FontColor}" BackgroundColor="{DynamicResource NormalBackGround}"/>
 
-                                <Label Text="{Binding DisplayAll}" IsVisible="{Binding IsVisible}" Grid.Row="1" FontSize="17" BackgroundColor="Beige" />
+                                <Label Text="{Binding DisplayAll}" IsVisible="{Binding IsVisible}" Grid.Row="1" FontSize="17" BackgroundColor="{DynamicResource NormalBackGround}" />
                             </Grid>
                         </ViewCell.View>
                     </custom:CustomViewCell>

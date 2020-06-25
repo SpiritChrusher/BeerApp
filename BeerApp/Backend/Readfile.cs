@@ -10,36 +10,33 @@ namespace BeerApp.Backend
 {
     class Readfile
     {
-        public static List<BeerPOJO> GetJson()
+        public static async Task<List<BeerPOJO>> GetJson()
         {
             List<BeerPOJO> jsonbeer;
 
             Uri url = new Uri("https://raw.githubusercontent.com/SpiritChrusher/FavoriteBeer/master/src/main/Allbeers.json", UriKind.Absolute);
 
-           // String url = "https://raw.githubusercontent.com/SpiritChrusher/FavoriteBeer/master/src/main/Allbeers.json";
-                System.Net.WebClient client = new System.Net.WebClient();
-           
-              string json = client.DownloadString(url);
+            System.Net.WebClient client = new System.Net.WebClient();
 
+            string json = await client.DownloadStringTaskAsync(url);
 
-                jsonbeer = ReadBeer(json);
-        
+            jsonbeer = await ReadBeer(json);
+
             return jsonbeer;
         }
 
-        private static List<BeerPOJO> ReadBeer(string all)
+        private static async Task<List<BeerPOJO>> ReadBeer(string all)
         {
             List<BeerPOJO> Beerslist;
 
-            Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(all);
+            Beerslist = await Task.Run(() => JsonConvert.DeserializeObject<List<BeerPOJO>>(all));
 
             return Beerslist;
         }
 
-       public static List<BeerPOJO> LocalJsonData(string allbeer)
+        public static List<BeerPOJO> LocalJsonData(string allbeer)
         {
             List<BeerPOJO> Beerslist;
-
 
             Beerslist = JsonConvert.DeserializeObject<List<BeerPOJO>>(allbeer);
 

@@ -18,7 +18,7 @@ namespace BeerApp
     {
 
         private List<BeerPOJO> beerlist;
-        private ObservableCollection<BeerPOJO> Expandinglist {get; set;}
+        private ObservableCollection<BeerPOJO> Expandinglist { get; set; }
 
 
         private bool isDark;
@@ -42,7 +42,6 @@ namespace BeerApp
                         App.Current.Resources["Buttonbg"] = "#0FFFFFFF";
                         App.Current.Resources["Borderc"] = "#AFFFFFFF";
                         App.Current.Resources["ButtonText"] = "#AFFFFFFF";
-
                     }
                     else
                     {
@@ -53,7 +52,6 @@ namespace BeerApp
                         App.Current.Resources["Borderc"] = Color.Black;
                         App.Current.Resources["ButtonText"] = Color.Black;
                     }
-
                 }
             }
         }
@@ -74,6 +72,7 @@ namespace BeerApp
                 App.Current.Resources["Buttonbg"] = "#0FFFFFFF";
                 App.Current.Resources["Borderc"] = "#AFFFFFFF";
                 App.Current.Resources["ButtonText"] = "#AFFFFFFF";
+                App.Current.Resources["Selectedbg"] = "#EF000500";
             }
             else
             {
@@ -83,69 +82,58 @@ namespace BeerApp
                 App.Current.Resources["Buttonbg"] = Color.Honeydew;
                 App.Current.Resources["Borderc"] = Color.Black;
                 App.Current.Resources["ButtonText"] = Color.Black;
+                App.Current.Resources["Selectedbg"] = Color.DarkSeaGreen;
             }
         }
-          private void Construct()
-          {
-              var current = Connectivity.NetworkAccess;
-
-              if (current == NetworkAccess.Internet)
-              {
-                  beerlist = Readfile.GetJson();
-
-                  mainlabel.Text = "lokális siker!";
-                  Application.Current.Properties["Everybeer"] = beerlist;
-                  WorkingSQL();
-                  mainlabel.Text = "online siker3!";
-              }
-
-              else
-              {
-                  var jsonString = Application.Current.Properties["Everybeer"].ToString();
-
-                  beerlist = Readfile.LocalJsonData(jsonString);
-
-                  WorkingSQL();
-              }
-
-          }
-
-
-          private void WorkingSQL()
-          { 
-              using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-              {
-                  conn.CreateTable<BeerSQL>();
-                  var beers = conn.Table<BeerSQL>().ToList();
-                  if (beers.Count > 0)
-                  {
-                      foreach (var item in beerlist)
-                      {
-                          foreach (var item2 in beers)
-                          {
-                              if (item.name == item2.Name)
-                              {
-                                  item.IsChecked = true;
-                              }
-                          }
-                      }
-                  }
-              }
-          }
-        
-        private async void ToListbeers_Clicked(object sender, EventArgs e)
+        private async Task Construct()
         {
-            await Navigation.PushAsync(new Listbeers(beerlist));
+            var current = Connectivity.NetworkAccess;
+
+            if (current == NetworkAccess.Internet)
+            {
+                beerlist = await Readfile.GetJson();
+                WorkingSQL();
+            }
+
+            else
+            {
+                var jsonString = Application.Current.Properties["Everybeer"].ToString();
+                beerlist = Readfile.LocalJsonData(jsonString);
+                WorkingSQL();
+            }
+
         }
-        
+
+        private void WorkingSQL()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            {
+                conn.CreateTable<BeerSQL>();
+                var beers = conn.Table<BeerSQL>().ToList();
+                if (beers.Count > 0)
+                {
+                    foreach (var item in beerlist)
+                    {
+                        foreach (var item2 in beers)
+                        {
+                            if (item.name == item2.Name)
+                            {
+                                item.IsChecked = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void beername_Completed(object sender, EventArgs e)
         {
-         
-           if (beername.Text != null)
+
+            if (beername.Text != null)
             {
                 if (beername.Text.EndsWith(" "))
                 {
-                  string newname = beername.Text.Remove(beername.Text.Length-1);
+                    string newname = beername.Text.Remove(beername.Text.Length - 1);
 
                     switch (searchby.SelectedIndex)
                     {
@@ -177,7 +165,7 @@ namespace BeerApp
                         MyListView.ItemsSource = null;
                         mainlabel.Text = "No beer found, try something else";
                     }
-                        
+
                 }
                 else
                 {
@@ -191,7 +179,7 @@ namespace BeerApp
                             break;
                         case 2:
                             Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.origin.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
-                           break;
+                            break;
                         case 3:
                             Expandinglist = new ObservableCollection<BeerPOJO>(beerlist.Where(x => x.manufacturer.ToLower() == beername.Text.ToLower()).OrderBy(x => x.name));
                             break;
@@ -215,19 +203,27 @@ namespace BeerApp
             }
             else
             {
-                mainlabel.Text = "No enough characters";
+                mainlabel.Text = "Not enough characters";
             }
-            
         }
 
         private async void ToRecommend_Clicked(object sender, EventArgs e)
-        {
-              await Navigation.PushAsync(new Recommend(beerlist));           
+        { 
+            BeerPOJO.ChangeVisible(beerlist);
+            await Navigation.PushAsync(new Recommend(beerlist));
         }
 
         private async void Favorites_Clicked(object sender, EventArgs e)
         {
+            BeerPOJO.ChangeVisible(beerlist);
+
             await Navigation.PushAsync(new Favorites(beerlist));
+        }
+        private async void ToListbeers_Clicked(object sender, EventArgs e)
+        {
+            BeerPOJO.ChangeVisible(beerlist);
+
+            await Navigation.PushAsync(new Listbeers(beerlist));
         }
 
         private void MyListView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -243,13 +239,13 @@ namespace BeerApp
         }
 
 
-          private void switcher_Toggled(object sender, ToggledEventArgs e)
-          {
+        private void switcher_Toggled(object sender, ToggledEventArgs e)
+        {
             IsDark = e.Value;
             Preferences.Set("darkmode", IsDark);
         }
 
-        
+
     }
 }
 

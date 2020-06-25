@@ -22,7 +22,9 @@ namespace BeerApp
 
         private void beernames_Completed(object sender, EventArgs e)
         {
-            List<BeerPOJO> completedlist = Recommending.RecommendBeers(beernames.Text, beerlist);
+            List<string> nameslist = beernames.Text.Split(',').ToList();
+
+            List<BeerPOJO> completedlist = Recommending.RecommendBeers(nameslist, beerlist);
 
             recommendedlabel.Text = "Here is the list: \n\n";
 

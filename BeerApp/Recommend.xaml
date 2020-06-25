@@ -12,7 +12,7 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label Text="Írj be sörneveket, és a program sorba rendező azokat! BETA  verzió"
+            <Label Text="Írj be sörneveket, és a program sorba rendező azokat! Közepesen BETA  verzió"
                 VerticalOptions="CenterAndExpand" TextColor="{DynamicResource FontColor}"
                 HorizontalOptions="CenterAndExpand"  Grid.Row="0" FontSize="16" Margin="10,10,10,0"/>
             <Entry x:Name="beernames" Completed="beernames_Completed"

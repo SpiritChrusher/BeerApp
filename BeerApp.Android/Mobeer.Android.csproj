@@ -71,6 +71,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CutsonViewCellRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,9 +103,9 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BeerApp\BeerApp.csproj">
-      <Project>{EE381D01-3071-4DC1-BEC7-F40606F8421F}</Project>
-      <Name>BeerApp</Name>
+    <ProjectReference Include="..\BeerApp\Mobeer.csproj">
+      <Project>{8DA9F919-387A-4927-829A-D4D62BD1BBE2}</Project>
+      <Name>Mobeer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

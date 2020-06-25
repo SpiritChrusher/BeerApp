@@ -23,20 +23,5 @@ namespace BeerApp
             Favoriteslist = new ObservableCollection<BeerPOJO>(favoritelist.Where(x => x.IsChecked == true).OrderBy(y => y.name));
             MyListView.ItemsSource = Favoriteslist;
         }
-
-       /* private void Button_Clicked(object sender, EventArgs e)
-        {
-           using(SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-            {
-                conn.DropTable<BeerSQL>();
-                conn.CreateTable<BeerSQL>();
-                
-                foreach (var item in Favoriteslist)
-                {
-                    BeerSQL tosql = new BeerSQL(item.name);
-                    conn.Insert(tosql);
-                }
-            }
-        }*/
     }
 }

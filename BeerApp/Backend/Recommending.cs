@@ -6,13 +6,11 @@ namespace BeerApp.Backend
 {
     class Recommending
     {
-        public static List<BeerPOJO> RecommendBeers(string entrybeers, List<BeerPOJO> beers)
+        public static List<BeerPOJO> RecommendBeers(List<string> entrybeers, List<BeerPOJO> beers)
         {
             List<BeerPOJO> thebeers = new List<BeerPOJO>();
 
-            string[] enterbeers = entrybeers.Split(',');
-
-            foreach (var name in enterbeers)
+            foreach (var name in entrybeers)
             {
                 string newname;
                 if (name[0] == ' ')
