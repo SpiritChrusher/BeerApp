@@ -12,19 +12,19 @@ using Xamarin.Forms.Xaml;
 
 namespace Mobeer
 {
+    
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BeerRecommendPage : ContentPage
     {
-        private ObservableCollection<BeerPOJO> obslist { get; set; }
+        private ObservableCollection<TastePOJO> obslist { get; set; }
         private List<BeerPOJO> list;
         public BeerRecommendPage(List<BeerPOJO> lista)
         {
             list = lista;
             InitializeComponent();
-            //  Dictionary<string, bool> dict = list.ToDictionary(x => x.taste.ToString(), x => x.IsVisible);
-            obslist = new ObservableCollection<BeerPOJO>(list.Select(x => new BeerPOJO { taste = x.taste, IsVisible = x.IsVisible }));
+            obslist = new ObservableCollection<TastePOJO>(BeerTypes.Alltaste.Select( x => new TastePOJO(x)));
             MyListView.ItemsSource = obslist;
-
         }
 
         private void MyListView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -42,8 +42,7 @@ namespace Mobeer
         //legalább 2őt választania kelljen, különben ne lehessen keresni
         private void Recommend_Clicked(object sender, EventArgs e)
         {
-            //igazából ehelyett a lista helyett kell egy sima list, amiben fel van sorolva az összes íz
-            List<string> between = list.Where(x => x.IsVisible == true).Select(x => x.taste[0]).ToList();
+            List<string> between = obslist.Where(x => x.Visible == true).Select(x => x.Taste).ToList();
 
             string[] recommendedbeers = Recommending.RecommendBeers(Recommendbeer.BeertoRecommend(between, list), list).
                 OrderByDescending(y => y.Value).Select(x => x.name).ToArray();
