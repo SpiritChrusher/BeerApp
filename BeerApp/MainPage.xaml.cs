@@ -99,7 +99,7 @@ namespace BeerApp
             else
             {
                 var jsonString = Application.Current.Properties["Everybeer"].ToString();
-                beerlist = Readfile.LocalJsonData(jsonString);
+                beerlist = await Readfile.ReadBeer(jsonString);
                 WorkingSQL();
             }
 

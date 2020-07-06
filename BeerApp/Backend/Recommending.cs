@@ -19,15 +19,17 @@ namespace BeerApp.Backend
                 }
                 else { newname = name; }
 
+                #region ForRegion
                 foreach (var beer in beers)
-                {                   
+                {
                     if (newname.ToLower() == beer.name.ToLower())
                     {
                         beer.Value = (BeerTypes.Typepoints(beer.type) + BeerTypes.Tastepoints(beer.taste)) * (beer.quality);
                         thebeers.Add(beer);
                         break;
                     }
-                }
+                } 
+                #endregion
             }
             return thebeers.OrderBy(x => x.Value).ThenBy(y => y.name).ToList();
         }

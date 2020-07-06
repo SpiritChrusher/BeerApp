@@ -17,7 +17,8 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <Label x:Name="mainlabel" TextColor="#3D513D" Text="The MoBeer App" Grid.Row="0" 
@@ -47,7 +48,7 @@
                       Footer="" HasUnevenRows="True" ItemTapped="MyListView_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <custom:CustomViewCell SelectedItemBackgroundColor="{DynamicResource MainBackGround}">
+                    <custom:CustomViewCell SelectedItemBackgroundColor="White">
                         <ViewCell.View>
                             <Grid HorizontalOptions="FillAndExpand" Padding="2" BackgroundColor="Transparent">
                                 <Grid.RowDefinitions>
@@ -65,22 +66,23 @@
             </ListView.ItemTemplate>
         </ListView>
         
-        <Button x:Name="ToListbeers" Text="Beerlist" Grid.Row="4"  WidthRequest="87" Grid.Column="0"
-                    Clicked="ToListbeers_Clicked" Margin="0, 10, 0, 0" BorderColor="{DynamicResource Borderc}" TextColor="{DynamicResource ButtonText}"
+        <Button x:Name="ToListbeers" Text="Beerlist" Grid.Row="4"  WidthRequest="140"
+                    Clicked="ToListbeers_Clicked" Margin="30, 10, 0, 5" BorderColor="{DynamicResource Borderc}" TextColor="{DynamicResource ButtonText}"
                 HorizontalOptions="Start" BackgroundColor="{DynamicResource Buttonbg}" BorderWidth="2"/>
 
-        
-        <Button x:Name="ToBeerRecommend" Text="Recommending" Clicked="ToBeerRecommend_Clicked" Margin="0, 10, 80, 0" 
-                HorizontalOptions="Center" WidthRequest="134" TextColor="{DynamicResource ButtonText}" Grid.Row="4"
-                BackgroundColor="{DynamicResource Buttonbg}" BorderWidth="2" BorderColor="{DynamicResource Borderc}"/>
-        
         <Button x:Name="Favorites" Text="Favorites" Clicked="Favorites_Clicked"  
-                    Margin="0, 10, 70, 0" Grid.Row="4" HorizontalOptions="End" 
-                WidthRequest="98" TextColor="{DynamicResource ButtonText}" 
+                    Margin="0, 10, 30, 5" Grid.Row="4" HorizontalOptions="End" 
+                WidthRequest="140" TextColor="{DynamicResource ButtonText}" 
                 BackgroundColor="{DynamicResource Buttonbg}" BorderColor="{DynamicResource Borderc}" BorderWidth="2"/>
 
-        <Button x:Name="ToRecommend" Text="Order" Clicked="ToRecommend_Clicked" Margin="0, 10, 0, 0" 
-                HorizontalOptions="End" Grid.Row="4" WidthRequest="69" TextColor="{DynamicResource ButtonText}" 
+
+        <Button x:Name="ToBeerRecommend" Text="Recommending" Clicked="ToBeerRecommend_Clicked" Margin="30, 5, 0, 5" 
+                HorizontalOptions="Start" WidthRequest="140" TextColor="{DynamicResource ButtonText}" Grid.Row="5"
+                BackgroundColor="{DynamicResource Buttonbg}" BorderWidth="2" BorderColor="{DynamicResource Borderc}"/>
+        
+        
+        <Button x:Name="ToRecommend" Text="Order" Clicked="ToRecommend_Clicked" Margin="0, 5, 30, 5" 
+                HorizontalOptions="End" Grid.Row="5" WidthRequest="140" TextColor="{DynamicResource ButtonText}" 
                 BackgroundColor="{DynamicResource Buttonbg}" BorderWidth="2" BorderColor="{DynamicResource Borderc}"/>
     </Grid>
     

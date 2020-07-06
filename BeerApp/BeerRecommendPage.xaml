@@ -15,7 +15,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="140"/>
         </Grid.RowDefinitions>
-        <Label Text="Find Your Wew Favorite Beer!"  HorizontalTextAlignment="Center" FontSize="18" 
+        <Label Text="Find Your Wew Favorite Beer [BETA]!!"  HorizontalTextAlignment="Center" FontSize="18" 
                    Grid.Row="0" TextColor="{DynamicResource FontColor}"/>
 
         <Button Text="Recommend" WidthRequest="115" HeightRequest="50" Margin="15, 2, 15, 2" x:Name="Recommend"

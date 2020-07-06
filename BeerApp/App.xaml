@@ -14,6 +14,7 @@
             <Color x:Key="Buttonbg"></Color>
             <Color x:Key="Borderc"></Color>
             <Color x:Key="ButtonText"></Color>
+            <Color x:Key="Labelbg"></Color>
         </ResourceDictionary>
                
     </Application.Resources>

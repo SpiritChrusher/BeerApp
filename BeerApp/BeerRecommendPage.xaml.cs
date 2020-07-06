@@ -44,8 +44,15 @@ namespace Mobeer
         {
             List<string> between = obslist.Where(x => x.Visible == true).Select(x => x.Taste).ToList();
 
-            string[] recommendedbeers = Recommending.RecommendBeers(Recommendbeer.BeertoRecommend(between, list), list).
-                OrderByDescending(y => y.Value).Select(x => x.name).ToArray();
+            if (between.Count >= 2)
+            {
+                string[] recommendedbeers = Recommending.RecommendBeers(Recommendbeer.BeertoRecommend(between, list), list).
+                    OrderByDescending(y => y.Value).Select(x => x.name).ToArray();
+            }
+            else
+            {
+                recommended.Text = "Válasszon ki legalább 2 nem ellentmondásos ízt";
+            }
         }
     }
 }
