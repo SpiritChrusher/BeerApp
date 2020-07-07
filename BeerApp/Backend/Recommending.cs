@@ -19,7 +19,7 @@ namespace BeerApp.Backend
                 }
                 else { newname = name; }
 
-                #region ForRegion
+                
                 foreach (var beer in beers)
                 {
                     if (newname.ToLower() == beer.name.ToLower())
@@ -29,7 +29,6 @@ namespace BeerApp.Backend
                         break;
                     }
                 } 
-                #endregion
             }
             return thebeers.OrderBy(x => x.Value).ThenBy(y => y.name).ToList();
         }
