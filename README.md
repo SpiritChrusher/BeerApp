@@ -2,6 +2,4 @@
 Mobile application about beers
 
 #Description
-Everyone's favorite beer application is now avaliable for android!
-
-Írkálok-firkálok.
+You can search for beers and even save your favorites!
